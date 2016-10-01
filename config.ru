@@ -3,5 +3,5 @@
 require ::File.expand_path('../config/environment', __FILE__)
 run Rails.application
 
-require './hello'
-run Sinatra::Application
+#require './hello'
+#run Sinatra::Application
