@@ -1,0 +1,11 @@
+id,name,jpname,cvs,price,net,energy,protein,fat,carbon,sugar,fiber,sodium,allergy
+1,plane salad-chicken,サラダチキン,seven-eleven,198,125,105,23.8,0.9,-,0.3,-,468,-
+2,herb salad-chicken,サラダチキン（ハーブ）,seven-eleven,198,115,98,22,0.7,-,0.9,-,715,-
+3,curry salad-chicken,サラダチキン（マイルドカレー）,seven-eleven,198,115,116,24.9,1.4,-,0.9,-,859,-
+4,plane salad chicken,サラダチキン,lawson,183,125,97,26.5,1,-,1.5,-,1063,-
+5,herb salad-chicken,サラダチキン（ハーブ）,lawson,195,125,131,27.4,1.6,-,1.4,-,763,-
+6,smoked salad-chicken,サラダチキン（スモーク）,lawson,195,115,131,28.5,1.6,-,0.5,-,575,-
+7,plane salad-chicken,国産鶏のサラダチキン,familymart,239,120,113,20.8,1.5,2.9,-,-,836,-
+8,herb salad-chicken,国産鶏のサラダチキン（３種のハーブ＆スパイス）,familymart,239,110,133,26.1,2.6,1.2,-,-,596,-
+9,citrus salad-chicken,国産鶏のサラダチキン（ゆず胡椒）,familymart,239,110,114,22.6,1.8,2,-,-,1386,-
+10,tandoori salad-chicken,国産鶏のサラダチキン（タンドリーチキン風）,familymart,239,110,146,25.1,3.6,3.2,-,-,828,-
