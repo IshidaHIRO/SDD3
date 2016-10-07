@@ -11,6 +11,22 @@
         vertical-align: top;
         
         }
+    .product{
+       width: 280px;
+       height: 400px;
+       margin: 0 auto;
+    }
+    .p_name{
+      text-align: center;
+      font-size: 20px;
+      color: #800000;      
+    }
+    .p_attr{
+      text-align: center;
+      font-size: 14px;
+    }
+
+
   </style>
 
 <h1 style="text-align: center; font: fantasy; font-size: 64px;">twentyfour-seven</h1>
@@ -23,12 +39,34 @@
   </div>
   <table>
     <tr><th>ファミマ</th><th>セブン</th><th>ローソン</th></tr>
-    <tr><td>ファミチキ</td><td>セブンチキン</td><td>ローチキ</td></tr>
+    <tr>
+      <td>
+        <div class="product">
+          <p class="p_name">国産鶏のサラダチキン</p>
+          <p class="p_attr">税込258円</p>
+          <p class="p_attr">113Kcal</p>
+        </div>
+      </td>
+      <td>
+        <div class="product">
+          <p class="p_name">サラダチキン</p>
+          <p class="p_attr">税込213円</p>
+          <p class="p_attr">115Kcal</p>
+        </div>
+      </td>
+      <td>
+        <div class="product">
+          <p class="p_name">サラダチキン</p>
+          <p class="p_attr">税込210円</p>
+          <p class="p_attr">125Kcal</p>
+        </div>
+      </td>
+    </tr>
 
   </table>
 
 </div>
 
 <div>
-<%=  link_to 'リンク先へジャンプ', '/countries/' %>
+   <%  ##link_to 'リンク先へジャンプ', '/countries/' %>
 </div>
