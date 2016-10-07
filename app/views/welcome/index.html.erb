@@ -7,14 +7,25 @@
 
     td {
         width: 300px;
-        height: 1000px;
+        height: 500px;
         vertical-align: top;
-        
         }
+    img{
+      vertical-align: middle;
+
+    }
+
     .product{
-       width: 280px;
+       width: 295px;
        height: 400px;
        margin: 0 auto;
+    }
+
+    .p_img{
+       width: 290px;
+       height: 250px;
+       vertical-align: middle;
+       line-height: 250px;
     }
     .p_name{
       text-align: center;
@@ -33,7 +44,7 @@
 <h2 style="text-align: center;">コンビニ3社の商品を比較するよ</h2>
 
 <div style=" width:1030px; margin: 0 auto;">
-  <div style="width: 100px; height: 1000px; float: left; border: 1px solid gray">
+  <div style="width: 100px; height: 500px; float: left; border: 1px solid gray">
   
     検索用
   </div>
@@ -42,6 +53,7 @@
     <tr>
       <td>
         <div class="product">
+          <div class="p_img"><%= image_tag 'R_2230023.jpg' %></div>
           <p class="p_name">国産鶏のサラダチキン</p>
           <p class="p_attr">税込258円</p>
           <p class="p_attr">113Kcal</p>
@@ -49,6 +61,7 @@
       </td>
       <td>
         <div class="product">
+          <div class="p_img"><%= image_tag 'R_44326.jpg' %></div>
           <p class="p_name">サラダチキン</p>
           <p class="p_attr">税込213円</p>
           <p class="p_attr">115Kcal</p>
@@ -56,6 +69,7 @@
       </td>
       <td>
         <div class="product">
+          <div class="p_img"><%= image_tag 'R_440473_pc.jpg' %></div>
           <p class="p_name">サラダチキン</p>
           <p class="p_attr">税込210円</p>
           <p class="p_attr">125Kcal</p>

@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# add 2016/10/04
+/db/sql_kh/*
