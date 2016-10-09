@@ -4,7 +4,10 @@ class WelcomeController < ApplicationController
   require 'twitter'
 
   def index
+    # TODO: 検索ワードの規則性に応じてパラメタ化する
     @result_tweets1 = search_tweets("サラダチキン　ファミマ　おいしい") 
+    @result_tweets2 = search_tweets("サラダチキン　セブンイレブン　おいしい") 
+    @result_tweets3 = search_tweets("サラダチキン　ローソン　おいしい") 
   end
 
   def search_tweets(query)
@@ -18,7 +21,7 @@ class WelcomeController < ApplicationController
     )
 
     since_id = nil
-    return client.search(query, count: 5, result_type: "recent", exclude: "retweets", since_id: since_id)
+    return client.search(query, count: 3, result_type: "recent", exclude: "retweets", since_id: since_id)
     
   end
 

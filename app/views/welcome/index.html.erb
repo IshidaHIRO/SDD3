@@ -79,7 +79,27 @@
     <tr>
       <td>
         <div class="tweets">
-          <% @result_tweets1.take(5).each do |tw| %> 
+          <% @result_tweets1.take(3).each do |tw| %> 
+            <p class="tw">
+              <%= tw.user.screen_name  %><br>
+              <%= tw.full_text  %>
+            </p>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <div class="tweets">
+          <% @result_tweets2.take(3).each do |tw| %> 
+            <p class="tw">
+              <%= tw.user.screen_name  %><br>
+              <%= tw.full_text  %>
+            </p>
+          <% end %>
+        </div>
+      </td>
+      <td>
+        <div class="tweets">
+          <% @result_tweets3.take(3).each do |tw| %> 
             <p class="tw">
               <%= tw.user.screen_name  %><br>
               <%= tw.full_text  %>
