@@ -1,8 +1,5 @@
 class WelcomeController < ApplicationController
 
-
-  require 'twitter'
-
   def index
     # TODO: 検索ワードの規則性に応じてパラメタ化する
     @result_tweets1 = search_tweets("サラダチキン　ファミマ　おいしい") 
