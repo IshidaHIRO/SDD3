@@ -76,18 +76,18 @@
         </div>
       </td>
     </tr>
-<!--
     <tr>
       <td>
         <div class="tweets">
           <% result_tweets = search_tweets("サラダチキン　ファミマ　おいしい") %>
-          <% result_tweets.each do |tw| %> 
-          <p class="tweet"></p>
+          <% result_tweets.take(10).each do |tw| %> 
+            <p class="tw_user"><%= tw.user.screen_name  %></p>
+            <p class="tw_text"><%= tw.full_text  %></p>
+            <br />
+          <% end %>
         </div>
       </td>
     </tr>
--->
-
   </table>
 
 </div>
