@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
       access_token_secret: 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm',
     )
 
-    result_tweets = client.search(query, count: 10, result_type: "recent", exclude: "retweets", since_id: since_id)
+    return client.search(query, count: 10, result_type: "recent", exclude: "retweets", since_id: since_id)
     
   end
 
