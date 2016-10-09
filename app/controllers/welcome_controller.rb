@@ -1,5 +1,12 @@
 class WelcomeController < ApplicationController
 
+
+  require 'twitter'
+
+  def index
+    @result_tweets1 = search_tweets("サラダチキン　ファミマ　おいしい") 
+  end
+
   def search_tweets(query)
     # APIの各種Keyの設定
     # TODO: 暫定で直書き
@@ -10,6 +17,7 @@ class WelcomeController < ApplicationController
       access_token_secret: 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm',
     )
 
+    since_id = nil
     return client.search(query, count: 10, result_type: "recent", exclude: "retweets", since_id: since_id)
     
   end
