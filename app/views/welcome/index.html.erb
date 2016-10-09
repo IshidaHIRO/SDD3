@@ -43,8 +43,9 @@
 <h1 style="text-align: center; font: fantasy; font-size: 64px;">twentyfour-seven</h1>
 <h2 style="text-align: center;">コンビニ3社の商品を比較するよ</h2>
 
-<div style=" width:1030px; margin: 0 auto;">
-  <div style="width: 100px; height: 500px; float: left; border: 1px solid gray">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-3">
  <div class="dropdown">
     <!-- デフォルト表示部分 -->
     <a class="btn btn-default dropdown-toggle" id="sample-menu-2" data-toggle="dropdown">
@@ -57,15 +58,25 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">サラダチキン</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">サラダ</li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">サラダA</a></li>
           <li role="presentation" class="divider"></li>
-          <li class="disabled" role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-          <li class="disabled" role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-        </ul>
-        <!-- リストここまで -->
-
+          <li role="presentation" class="dropdown-header">スープ</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">スープA</a></li> 
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">おにぎり</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おにぎりA</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">パン</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">パンA</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">おでん</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おでんA</a></li>
+          <li role="presentation" class="divider"></li>
+       </ul>
       </div> 
   </div>
+</div>
+<div class="col-xs-12 clol-md-9">
   <table>
     <tr><th>ファミマ</th><th>セブン</th><th>ローソン</th></tr>
     <tr>
@@ -127,7 +138,7 @@
       </td>
     </tr>
   </table>
-
+</div>
 </div>
 
 <div>
