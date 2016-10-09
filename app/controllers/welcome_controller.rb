@@ -18,7 +18,7 @@ class WelcomeController < ApplicationController
     )
 
     since_id = nil
-    return client.search(query, count: 10, result_type: "recent", exclude: "retweets", since_id: since_id)
+    return client.search(query, count: 5, result_type: "recent", exclude: "retweets", since_id: since_id)
     
   end
 

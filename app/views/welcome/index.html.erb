@@ -79,10 +79,11 @@
     <tr>
       <td>
         <div class="tweets">
-          <% @result_tweets1.take(10).each do |tw| %> 
-            <p class="tw_user"><%= tw.user.screen_name  %></p>
-            <p class="tw_text"><%= tw.full_text  %></p>
-            <br />
+          <% @result_tweets1.take(5).each do |tw| %> 
+            <p class="tw">
+              <%= tw.user.screen_name  %><br>
+              <%= tw.full_text  %>
+            </p>
           <% end %>
         </div>
       </td>
