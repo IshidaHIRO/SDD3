@@ -12,17 +12,26 @@
         }
     img{
       vertical-align: middle;
-
+      width: 100%;  
     }
-
-    .product{
-       width: 295px;
+    .grid_black{
+     padding:0 15px;
+     border-color: black;
+     border-style: solid;
+     border-width: 1px;
+    }
+    .grid_black_mid{
+     padding:0 15px;
+     border-color:black;
+     border-style:solid;
+     border-width: 1px 0px 1px 0px;
+    }
+    .product{ 
        height: 400px;
        margin: 0 auto;
     }
 
     .p_img{
-       width: 290px;
        height: 250px;
        vertical-align: middle;
        line-height: 250px;
@@ -43,41 +52,48 @@
 <h1 style="text-align: center; font: fantasy; font-size: 64px;">twentyfour-seven</h1>
 <h2 style="text-align: center;">コンビニ3社の商品を比較するよ</h2>
 
-<div style=" width:1030px; margin: 0 auto;">
-  <div style="width: 100px; height: 500px; float: left; border: 1px solid gray">
-  
-    検索用
+<div class="container">
+<div class="row row-eq-height">
+<div class="col-xs-12 col-md-2">
+ <div class="dropdown">
+    <!-- デフォルト表示部分 -->
+    <a class="btn btn-default dropdown-toggle" id="sample-menu-2" data-toggle="dropdown">
+          商品選択メニュー<span class="caret"></span>
+        </a>
+        
+        <!-- リスト部分 -->
+        <ul class="dropdown-menu" role="menu" aria-labelledby="sample-menu-2">
+          <li role="presentation" class="dropdown-header">チキン</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">サラダチキン</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">サラダ</li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">サラダA</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">スープ</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">スープA</a></li> 
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">おにぎり</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おにぎりA</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">パン</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">パンA</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation" class="dropdown-header">おでん</li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おでんA</a></li>
+          <li role="presentation" class="divider"></li>
+       </ul>
+      </div> 
   </div>
-  <table>
-    <tr><th>ファミマ</th><th>セブン</th><th>ローソン</th></tr>
-    <tr>
-      <td>
+<div class="col-xs-12 col-md-9 row-eq-height">
+<div class="col-xs-12 col-md-4 grid_black">  
+<h3>ファミマ</h3>
         <div class="product">
           <div class="p_img"><%= image_tag 'R_2230023.jpg' %></div>
           <p class="p_name">国産鶏のサラダチキン</p>
           <p class="p_attr">税込258円</p>
           <p class="p_attr">113Kcal</p>
         </div>
-      </td>
-      <td>
-        <div class="product">
-          <div class="p_img"><%= image_tag 'R_44326.jpg' %></div>
-          <p class="p_name">サラダチキン</p>
-          <p class="p_attr">税込213円</p>
-          <p class="p_attr">115Kcal</p>
-        </div>
-      </td>
-      <td>
-        <div class="product">
-          <div class="p_img"><%= image_tag 'R_440473_pc.jpg' %></div>
-          <p class="p_name">サラダチキン</p>
-          <p class="p_attr">税込210円</p>
-          <p class="p_attr">125Kcal</p>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
+
         <div class="tweets">
           <% @result_tweets1.take(3).each do |tw| %> 
             <p class="tw">
@@ -86,8 +102,18 @@
             </p>
           <% end %>
         </div>
-      </td>
-      <td>
+</div>
+
+  <div class="col-xs-12 col-md-4 grid_black_mid">
+<h3>セブン</h3>
+
+        <div class="product">
+          <div class="p_img"><%= image_tag 'R_44326.jpg' %></div>
+          <p class="p_name">サラダチキン</p>
+          <p class="p_attr">税込213円</p>
+          <p class="p_attr">115Kcal</p>
+        </div>
+
         <div class="tweets">
           <% @result_tweets2.take(3).each do |tw| %> 
             <p class="tw">
@@ -96,8 +122,19 @@
             </p>
           <% end %>
         </div>
-      </td>
-      <td>
+ </div> 
+  <div class="col-xs-12 col-md-4 grid_black">
+<h3>ローソン</h3>
+
+
+
+        <div class="product">
+          <div class="p_img"><%= image_tag 'R_440473_pc.jpg' %></div>
+          <p class="p_name">サラダチキン</p>
+          <p class="p_attr">税込210円</p>
+          <p class="p_attr">125Kcal</p>
+        </div>
+
         <div class="tweets">
           <% @result_tweets3.take(3).each do |tw| %> 
             <p class="tw">
@@ -106,10 +143,8 @@
             </p>
           <% end %>
         </div>
-      </td>
-    </tr>
-  </table>
-
+</div>
+</div>
 </div>
 
 <div>
