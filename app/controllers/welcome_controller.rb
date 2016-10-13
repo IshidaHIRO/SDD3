@@ -1,14 +1,19 @@
 class WelcomeController < ApplicationController
 
   def index
-    # TODO: 検索ワードの規則性に応じてパラメタ化する
-    @result_tweets1 = search_tweets("サラダチキン　ファミマ　おいしい") 
-    @result_tweets2 = search_tweets("サラダチキン　セブンイレブン　おいしい") 
-    @result_tweets3 = search_tweets("サラダチキン　ローソン　おいしい") 
+    item = params[:item]
+    if(item.nil? || item == "") 
+      item = "サラダキチン"
+    end
+    # TODO: 検索ワードの規則性に応じてパラメタ化する    
+    @result_tweets1 = search_tweets(item + "　ファミマ　おいしい") 
+    @result_tweets2 = search_tweets(item + "　セブンイレブン　おいしい") 
+    @result_tweets3 = search_tweets(item + "　ローソン　おいしい") 
     
-    @product = (self.get_product_hash)["サラダキチン"]
+    @product = (self.get_product_hash)[item]
 
   end
+  
 
   def search_tweets(query)
     # APIの各種Keyの設定
@@ -31,7 +36,12 @@ class WelcomeController < ApplicationController
     hash["サラダキチン"]["ファミマ"]= Product_dto.new("ファミマ","キチン","サラダキチン","国産鶏のサラダチキン",258,113,"R_2230023.jpg")
     hash["サラダキチン"]["セブン"]= Product_dto.new("セブン","キチン","サラダキチン","サラダチキン",213,115,"R_44326.jpg")
     hash["サラダキチン"]["ローソン"]= Product_dto.new("ローソン","キチン","サラダキチン","サラダチキン",210,125,"R_440473_pc.jpg")
-
+    hash["サラダ"]["ファミマ"]= Product_dto.new("ファミマ","サラダ","サラダ","フレッシュ野菜サラダ(ドレッシング別売り）",163,30,nil)
+    hash["サラダ"]["セブン"]= Product_dto.new("セブン","サラダ","サラダ","ミックス野菜サラダ(ドレッシング別売り）",163,"-",nil)
+    hash["サラダ"]["ローソン"]= Product_dto.new("ローソン","サラダ","サラダ","コーンサラダ(ドレッシング別売り）",148,49,nil) 
+    hash["スープ"]["ファミマ"]= Product_dto.new("ファミマ","スープ","スープ","豚汁",298,106,nil)
+    hash["スープ"]["セブン"]= Product_dto.new("セブン","スープ","スープ","生姜香る鶏肉と野菜の和風スープ",298,141,nil)
+    hash["スープ"]["ローソン"]= Product_dto.new("ローソン","スープ","スープ","Lクラムチャウダー",298,141,nil)
     return hash
 　end
 end

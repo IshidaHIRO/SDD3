@@ -27,7 +27,7 @@
      border-width: 1px 0px 1px 0px;
     }
     .product{ 
-       height: 400px;
+
        margin: 0 auto;
     }
 
@@ -64,13 +64,13 @@
         <!-- リスト部分 -->
         <ul class="dropdown-menu" role="menu" aria-labelledby="sample-menu-2">
           <li role="presentation" class="dropdown-header">チキン</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">サラダチキン</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダキチン">サラダチキン</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">サラダ</li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">サラダA</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダ">サラダ</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">スープ</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">スープA</a></li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/スープ">スープ</a></li> 
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">おにぎり</li> 
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おにぎりA</a></li>
@@ -88,7 +88,9 @@
 <div class="col-xs-12 col-md-4 grid_black">  
 <h3>ファミマ</h3>
         <div class="product">
+          <% if !@product["ファミマ"].image_url.nil? %> 
           <div class="p_img"><%= image_tag @product["ファミマ"].image_url %></div>
+          <% end %>
           <p class="p_name"><%= @product["ファミマ"].name %></p>
           <p class="p_attr">税込<%= @product["ファミマ"].price %>円</p>
           <p class="p_attr"><%= @product["ファミマ"].calorie %>kcal</p>
@@ -108,8 +110,9 @@
 <h3>セブン</h3>
 
         <div class="product">
+          <% if !@product["セブン"].image_url.nil? %> 
           <div class="p_img"><%= image_tag @product["セブン"].image_url %></div>
-            
+          <% end %>
           <p class="p_name"><%= @product["セブン"].name %></p>
           <p class="p_attr">税込<%= @product["セブン"].price %>円</p>
           <p class="p_attr"><%= @product["セブン"].calorie %>kcal</p>
@@ -129,7 +132,9 @@
   <div class="col-xs-12 col-md-4 grid_black">
 <h3>ローソン</h3>
         <div class="product">
+          <% if !@product["ローソン"].image_url.nil? %> 
           <div class="p_img"><%= image_tag @product["ローソン"].image_url %></div>  
+          <% end %>
           <p class="p_name"><%= @product["ローソン"].name %></p>
           <p class="p_attr">税込<%= @product["ローソン"].price %>円</p>
           <p class="p_attr"><%= @product["ローソン"].calorie %>kcal</p>
