@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   def index
     item = params[:item]
     if(item.nil? || item == "") 
-      item = "サラダキチン"
+      item = "サラダチキン"
     end
     # TODO: 検索ワードの規則性に応じてパラメタ化する    
     @result_tweets1 = search_tweets(item + "　ファミマ　おいしい") 
@@ -33,9 +33,9 @@ class WelcomeController < ApplicationController
   def get_product_hash
     # 品目 => コンビニ => 商品
     hash = Hash.new { |h,k| h[k] = {} }
-    hash["サラダキチン"]["ファミマ"]= Product_dto.new("ファミマ","キチン","サラダキチン","国産鶏のサラダチキン",258,113,"R_2230023.jpg")
-    hash["サラダキチン"]["セブン"]= Product_dto.new("セブン","キチン","サラダキチン","サラダチキン",213,115,"R_44326.jpg")
-    hash["サラダキチン"]["ローソン"]= Product_dto.new("ローソン","キチン","サラダキチン","サラダチキン",210,125,"R_440473_pc.jpg")
+    hash["サラダチキン"]["ファミマ"]= Product_dto.new("ファミマ","チキン","サラダチキン","国産鶏のサラダチキン",258,113,"R_2230023.jpg")
+    hash["サラダチキン"]["セブン"]= Product_dto.new("セブン","チキン","サラダチキン","サラダチキン",213,115,"R_44326.jpg")
+    hash["サラダチキン"]["ローソン"]= Product_dto.new("ローソン","チキン","サラダチキン","サラダチキン",210,125,"R_440473_pc.jpg")
     hash["サラダ"]["ファミマ"]= Product_dto.new("ファミマ","サラダ","サラダ","フレッシュ野菜サラダ(ドレッシング別売り）",163,30,nil)
     hash["サラダ"]["セブン"]= Product_dto.new("セブン","サラダ","サラダ","ミックス野菜サラダ(ドレッシング別売り）",163,"-",nil)
     hash["サラダ"]["ローソン"]= Product_dto.new("ローソン","サラダ","サラダ","コーンサラダ(ドレッシング別売り）",148,49,nil) 
