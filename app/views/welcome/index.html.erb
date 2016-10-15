@@ -72,7 +72,7 @@
         <!-- リスト部分 -->
         <ul class="dropdown-menu" role="menu" aria-labelledby="sample-menu-2">
           <li role="presentation" class="dropdown-header">チキン</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダキチン">サラダチキン</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダチキン">サラダチキン</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">サラダ</li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダ">サラダ</a></li>
@@ -81,18 +81,19 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/スープ">スープ</a></li> 
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">おにぎり</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おにぎりA</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり">おにぎり</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">パン</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">パンA</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation" class="dropdown-header">おでん</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">おでんA</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/パン">パン</a></li>    
           <li role="presentation" class="divider"></li>
        </ul>
       </div> 
   </div>
 <div class="col-xs-12 col-md-9 row-eq-height">
+<% if @product["ファミマ"].nil? %>
+<p>選択した商品が見つかりませんでした</p>
+<% end %>
+<% if !@product["ファミマ"].nil? %>
 <div class="col-xs-12 col-md-4 grid_black shadow_famima">  
 <h3>ファミマ</h3>
         <div class="product">
@@ -160,6 +161,7 @@
         </div>
 </div>
 </div>
+<% end %>
 </div>
 
 <div>
