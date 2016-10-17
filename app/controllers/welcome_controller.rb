@@ -5,7 +5,6 @@ class WelcomeController < ApplicationController
     if(item.nil? || item == "") 
       item = "サラダチキン"
     end
-    # TODO: 検索ワードの規則性に応じてパラメタ化する    
     @result_tweets1 = search_tweets(item + "　ファミマ　おいしい") 
     @result_tweets2 = search_tweets(item + "　セブンイレブン　おいしい") 
     @result_tweets3 = search_tweets(item + "　ローソン　おいしい") 
@@ -15,14 +14,22 @@ class WelcomeController < ApplicationController
   end
   
 
-  def search_tweets(query)
-    # APIの各種Keyの設定
-    # TODO: 暫定で直書き
+  # TODO: Twitter関連はmodel内のクラス化するか
+  # TODO: 暫定で直書き
+
+  # APIの各種Keyの設定
+  @consumconsumer_key  = 'mnDCpUfy63JiypEirQRCgI60W'
+  @consumer_secret     = 'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban'
+  @access_token        = '19013248-gtuzqSQ8jv9VJmtfA9hks8kmJr9jQ33SWzkHMr7Os'
+  @access_token_secret = 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm'
+
+  def search_tweets_recent(query)
+    # Twitterキーワード検索（直近）
     client = Twitter::REST::Client.new(
-      consumer_key: 'mnDCpUfy63JiypEirQRCgI60W',
-      consumer_secret:   'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban',
-      access_token:        '19013248-gtuzqSQ8jv9VJmtfA9hks8kmJr9jQ33SWzkHMr7Os',
-      access_token_secret: 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm',
+      consumer_key:        @consumconsumer_key,
+      consumer_secret:     @consumer_secret,
+      access_token:        @access_token,
+      access_token_secret: @access_token_secret,
     )
 
     since_id = nil
