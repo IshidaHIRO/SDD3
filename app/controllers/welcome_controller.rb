@@ -5,9 +5,9 @@ class WelcomeController < ApplicationController
     if(item.nil? || item == "") 
       item = "サラダチキン"
     end
-    @result_tweets1 = search_tweets(item + "　ファミマ　おいしい") 
-    @result_tweets2 = search_tweets(item + "　セブンイレブン　おいしい") 
-    @result_tweets3 = search_tweets(item + "　ローソン　おいしい") 
+    @result_tweets1 = search_tw_cnt_all(item + "　ファミマ") 
+    @result_tweets2 = search_tw_cnt_all(item + "　セブンイレブン") 
+    @result_tweets3 = search_tw_cnt_all(item + "　ローソン") 
     
     @product = (self.get_product_hash)[item]
 
@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
   @access_token        = '19013248-gtuzqSQ8jv9VJmtfA9hks8kmJr9jQ33SWzkHMr7Os'
   @access_token_secret = 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm'
 
-  def search_tweets_recent(query)
+  def search_tw_recent(query)
     # Twitterキーワード検索（直近）
     client = Twitter::REST::Client.new(
       consumer_key:        @consumconsumer_key,
@@ -32,9 +32,32 @@ class WelcomeController < ApplicationController
       access_token_secret: @access_token_secret,
     )
 
-    since_id = nil
-    return client.search(query, count: 3, result_type: "recent", exclude: "retweets", since_id: since_id)
+    return client.search(query, count: 3, result_type: "recent", exclude: "retweets", since_id: nil)
     
+  end
+
+  def search_tw_cnt_all(query)
+    # Twitterキーワード検索（直近）
+    client = Twitter::REST::Client.new(
+      consumer_key:        @consumconsumer_key,
+      consumer_secret:     @consumer_secret,
+      access_token:        @access_token,
+      access_token_secret: @access_token_secret,
+    )
+
+    # TODO:untilをシステム日付から取得する
+    # 初回検索
+    result_tweets = client.search(query, count: 100, result_type: "mixed", exclude: "retweets", since_id: nil, until: "2016-10-15")
+    tw_cnt += result_tweets.count
+
+    # 2ページ目以降の検索
+    while(result_tweets.next_results)
+      result_tweets = client.search(result_tweets.next_results)      
+      tw_cnt += result_tweets.count
+    end
+
+    return tw_cnt    
+
   end
   
   def get_product_hash
@@ -57,5 +80,4 @@ class WelcomeController < ApplicationController
     hash["パン"]["ファミマ"]= Product_dto.new("ファミマ","パン","パン","チョコチップスナック",100,"-",nil)
     return hash
 　end
-end
 end
