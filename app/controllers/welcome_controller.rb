@@ -5,9 +5,9 @@ class WelcomeController < ApplicationController
     if(item.nil? || item == "") 
       item = "サラダチキン"
     end
-    @result_tweets1 = search_tw_cnt_all(item + "　ファミマ") 
-    @result_tweets2 = search_tw_cnt_all(item + "　セブンイレブン") 
-    @result_tweets3 = search_tw_cnt_all(item + "　ローソン") 
+    @result_tw_cnt_all1 = search_tw_cnt_all(item + "　ファミマ") 
+    @result_tw_cnt_all2 = search_tw_cnt_all(item + "　セブンイレブン") 
+    @result_tw_cnt_all3 = search_tw_cnt_all(item + "　ローソン") 
     
     @product = (self.get_product_hash)[item]
 
@@ -37,23 +37,45 @@ class WelcomeController < ApplicationController
   end
 
   def search_tw_cnt_all(query)
+
+    tw_cnt = 0
+
     # Twitterキーワード検索（直近）
+    # client = Twitter::REST::Client.new(
+    #   consumer_key:        @consumconsumer_key,
+    #   consumer_secret:     @consumer_secret,
+    #   access_token:        @access_token,
+    #   access_token_secret: @access_token_secret,
+    # )
     client = Twitter::REST::Client.new(
-      consumer_key:        @consumconsumer_key,
-      consumer_secret:     @consumer_secret,
-      access_token:        @access_token,
-      access_token_secret: @access_token_secret,
+      consumer_key:        'mnDCpUfy63JiypEirQRCgI60W',
+      consumer_secret:     'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban',
+      access_token:        '19013248-gtuzqSQ8jv9VJmtfA9hks8kmJr9jQ33SWzkHMr7Os',
+      access_token_secret: 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm',
     )
 
     # TODO:untilをシステム日付から取得する
     # 初回検索
     result_tweets = client.search(query, count: 100, result_type: "mixed", exclude: "retweets", since_id: nil, until: "2016-10-15")
-    tw_cnt += result_tweets.count
 
-    # 2ページ目以降の検索
-    while(result_tweets.next_results)
-      result_tweets = client.search(result_tweets.next_results)      
-      tw_cnt += result_tweets.count
+    if result_tweets.attrs[:statuses].size > 0
+
+      tw_cnt += result_tweets.attrs[:statuses].size
+
+      # TODO:検索結果からcreated_atの日付で3日以内とかに絞らないとならない
+
+      # 2ページ目以降の検索
+      while(result_tweets.attrs[:search_metadata][:next_results])
+        # 先頭の?を削除し次ページを検索
+        result_tweets = client.search(result_tweets.attrs[:search_metadata][:next_results].slice!(0)) 
+        if result_tweets.attrs[:statuses].size > 0     
+          tw_cnt += result_tweets.attrs[:statuses].size
+        end
+
+        # TODO:ブレーク条件検討
+        break if tw_cnt > 100
+      end
+
     end
 
     return tw_cnt    
@@ -80,4 +102,5 @@ class WelcomeController < ApplicationController
     hash["パン"]["ファミマ"]= Product_dto.new("ファミマ","パン","パン","チョコチップスナック",100,"-",nil)
     return hash
 　end
+end
 end
