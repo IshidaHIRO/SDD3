@@ -5,29 +5,37 @@ class WelcomeController < ApplicationController
     if(item.nil? || item == "") 
       item = "サラダチキン"
     end
-    # TODO: 検索ワードの規則性に応じてパラメタ化する    
-    @result_tweets1 = search_tweets(item + "　ファミマ　おいしい") 
-    @result_tweets2 = search_tweets(item + "　セブンイレブン　おいしい") 
-    @result_tweets3 = search_tweets(item + "　ローソン　おいしい") 
+    @tw_cnt_all1  = get_twitter_cnt(item + "　ファミマ") 
+    @tw_cnt_all2  = get_twitter_cnt(item + "　セブンイレブン") 
+    @tw_cnt_all3  = get_twitter_cnt(item + "　ローソン")
+    @tw_cnt_good1 = get_twitter_cnt(item + "　ファミマ　おいしい")
+    @tw_cnt_good2 = get_twitter_cnt(item + "　セブンイレブン　おいしい")
+    @tw_cnt_good3 = get_twitter_cnt(item + "　ローソン　おいしい")
+    @tw_cnt_bad1  = get_twitter_cnt(item + "　ファミマ　まずい")
+    @tw_cnt_bad2  = get_twitter_cnt(item + "　セブンイレブン　まずい")
+    @tw_cnt_bad3  = get_twitter_cnt(item + "　ローソン　まずい") 
     
     @product = (self.get_product_hash)[item]
 
   end
   
+  def get_twitter_cnt(query)
+    # Twitterキーワード検索結果を返す
 
-  def search_tweets(query)
-    # APIの各種Keyの設定
     # TODO: 暫定で直書き
     client = Twitter::REST::Client.new(
-      consumer_key: 'mnDCpUfy63JiypEirQRCgI60W',
-      consumer_secret:   'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban',
+      consumer_key:        'mnDCpUfy63JiypEirQRCgI60W',
+      consumer_secret:     'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban',
       access_token:        '19013248-gtuzqSQ8jv9VJmtfA9hks8kmJr9jQ33SWzkHMr7Os',
       access_token_secret: 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm',
     )
 
-    since_id = nil
-    return client.search(query, count: 3, result_type: "recent", exclude: "retweets", since_id: since_id)
-    
+    # 直近１週間のTweet件数を取得
+    query <<  "　since:" + (Date.today - 7).strftime("%Y-%m-%d")
+    result_tweets = client.search(query, count: nil, result_type: "mixed", exclude: "retweets", since_id: nil)
+
+    return result_tweets.count    
+
   end
   
   def get_product_hash

@@ -106,12 +106,9 @@
         </div>
 
         <div class="tweets">
-          <% @result_tweets1.take(3).each do |tw| %> 
-            <p class="tw">
-              <%= tw.user.screen_name  %><br>
-              <%= tw.full_text  %>
-            </p>
-          <% end %>
+          <p class="tw_all">話題数：<%= @tw_cnt_all1  %><br></p>
+          <p class="tw_good">　おいしい：<%= @tw_cnt_good1  %><br></p>
+          <p class="tw_bad">　まずい：<%= @tw_cnt_bad1  %><br></p>
         </div>
 </div>
 
@@ -130,12 +127,9 @@
         </div>
 
         <div class="tweets">
-          <% @result_tweets2.take(3).each do |tw| %> 
-            <p class="tw">
-              <%= tw.user.screen_name  %><br>
-              <%= tw.full_text  %>
-            </p>
-          <% end %>
+          <p class="tw_all">話題数：<%= @tw_cnt_all2  %><br></p>
+          <p class="tw_good">　おいしい：<%= @tw_cnt_good2  %><br></p>
+          <p class="tw_bad">　まずい：<%= @tw_cnt_bad2  %><br></p>
         </div>
  </div> 
   <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
@@ -152,12 +146,9 @@
         </div>
 
         <div class="tweets">
-          <% @result_tweets3.take(3).each do |tw| %> 
-            <p class="tw">
-              <%= tw.user.screen_name  %><br>
-              <%= tw.full_text  %>
-            </p>
-          <% end %>
+          <p class="tw_all">話題数：<%= @tw_cnt_all3  %><br></p>
+          <p class="tw_good">　おいしい：<%= @tw_cnt_good3  %><br></p>
+          <p class="tw_bad">　まずい：<%= @tw_cnt_bad3  %><br></p>
         </div>
 </div>
 </div>
