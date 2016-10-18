@@ -1,21 +1,21 @@
 class WelcomeController < ApplicationController
 
   def index
-    item = params[:item]
-    if(item.nil? || item == "") 
-      item = "サラダチキン"
+    @item = params[:item]
+    if(@item.nil? || @item == "") 
+      @item = "サラダチキン"
     end
-    @tw_cnt_all1  = get_twitter_cnt(item + "　ファミマ") 
-    @tw_cnt_all2  = get_twitter_cnt(item + "　セブンイレブン") 
-    @tw_cnt_all3  = get_twitter_cnt(item + "　ローソン")
-    @tw_cnt_good1 = get_twitter_cnt(item + "　ファミマ　おいしい")
-    @tw_cnt_good2 = get_twitter_cnt(item + "　セブンイレブン　おいしい")
-    @tw_cnt_good3 = get_twitter_cnt(item + "　ローソン　おいしい")
-    @tw_cnt_bad1  = get_twitter_cnt(item + "　ファミマ　まずい")
-    @tw_cnt_bad2  = get_twitter_cnt(item + "　セブンイレブン　まずい")
-    @tw_cnt_bad3  = get_twitter_cnt(item + "　ローソン　まずい") 
+    @tw_cnt_all1  = get_twitter_cnt(@item + "　ファミマ") 
+    @tw_cnt_all2  = get_twitter_cnt(@item + "　セブンイレブン") 
+    @tw_cnt_all3  = get_twitter_cnt(@item + "　ローソン")
+    @tw_cnt_good1 = get_twitter_cnt(@item + "　ファミマ　おいしい")
+    @tw_cnt_good2 = get_twitter_cnt(@item + "　セブンイレブン　おいしい")
+    @tw_cnt_good3 = get_twitter_cnt(@item + "　ローソン　おいしい")
+    @tw_cnt_bad1  = get_twitter_cnt(@item + "　ファミマ　まずい")
+    @tw_cnt_bad2  = get_twitter_cnt(@item + "　セブンイレブン　まずい")
+    @tw_cnt_bad3  = get_twitter_cnt(@item + "　ローソン　まずい") 
     
-    @product = (self.get_product_hash)[item]
+    @product = (self.get_product_hash)[@item]
 
   end
   
@@ -42,21 +42,21 @@ class WelcomeController < ApplicationController
   def get_product_hash
     # 品目 => コンビニ => 商品
     hash = Hash.new { |h,k| h[k] = {} }
-    hash["サラダチキン"]["ファミマ"]= Product_dto.new("ファミマ","チキン","サラダチキン","国産鶏のサラダチキン",258,113,nil)
-    hash["サラダチキン"]["セブン"]= Product_dto.new("セブン","チキン","サラダチキン","サラダチキン",213,115,nil)
-    hash["サラダチキン"]["ローソン"]= Product_dto.new("ローソン","チキン","サラダチキン","サラダチキン",210,125,nil)
-    hash["サラダ"]["ファミマ"]= Product_dto.new("ファミマ","サラダ","サラダ","フレッシュ野菜サラダ(ドレッシング別売り）",163,30,nil)
-    hash["サラダ"]["セブン"]= Product_dto.new("セブン","サラダ","サラダ","ミックス野菜サラダ(ドレッシング別売り）",163,"-",nil)
-    hash["サラダ"]["ローソン"]= Product_dto.new("ローソン","サラダ","サラダ","コーンサラダ(ドレッシング別売り）",148,49,nil) 
-    hash["スープ"]["ファミマ"]= Product_dto.new("ファミマ","スープ","スープ","豚汁",298,106,nil)
-    hash["スープ"]["セブン"]= Product_dto.new("セブン","スープ","スープ","生姜香る鶏肉と野菜の和風スープ",298,141,nil)
-    hash["スープ"]["ローソン"]= Product_dto.new("ローソン","スープ","スープ","Lクラムチャウダー",298,141,nil) 
-    hash["おにぎり"]["ファミマ"]= Product_dto.new("ファミマ","おにぎり","おにぎり","紀州南高梅",110,183,nil)
-    hash["おにぎり"]["セブン"]= Product_dto.new("セブン","おにぎり","おにぎり","紀州南高梅",110,164,nil)
-    hash["おにぎり"]["ローソン"]= Product_dto.new("ローソン","おにぎり","おにぎり","紀州南高梅",110,164,nil)
-    hash["パン"]["セブン"]= Product_dto.new("セブン","パン","パン","チョコチップスナック",100,89,nil)
-    hash["パン"]["ローソン"]= Product_dto.new("ローソン","パン","パン","チョコチップスティックパン",100,90,nil)
-    hash["パン"]["ファミマ"]= Product_dto.new("ファミマ","パン","パン","チョコチップスナック",100,"-",nil)
+    hash["サラダチキン"]["ファミマ"]= Product_dto.new("ファミマ","チキン","サラダチキン","国産鶏のサラダチキン",258,113,120,20.8,1.5,2.9,"-","-",836)
+    hash["サラダチキン"]["セブン"]= Product_dto.new("セブン","チキン","サラダチキン","サラダチキン",213,115,nil,nil,nil,nil,nil,nil,nil)
+    hash["サラダチキン"]["ローソン"]= Product_dto.new("ローソン","チキン","サラダチキン","サラダチキン",210,125,nil,nil,nil,nil,nil,nil,nil)
+    hash["サラダ"]["ファミマ"]= Product_dto.new("ファミマ","サラダ","サラダ","フレッシュ野菜サラダ(ドレッシング別売り）",163,30,"-",1.3,0.3,5.4,"-","-",19)
+    hash["サラダ"]["セブン"]= Product_dto.new("セブン","サラダ","サラダ","ミックス野菜サラダ(ドレッシング別売り）",163,"-",nil,nil,nil,nil,nil,nil,nil)
+    hash["サラダ"]["ローソン"]= Product_dto.new("ローソン","サラダ","サラダ","コーンサラダ(ドレッシング別売り）",148,49,nil,nil,nil,nil,nil,nil,nil) 
+    hash["スープ"]["ファミマ"]= Product_dto.new("ファミマ","スープ","スープ","10種具材の豚汁",330,122,"-",9.3,5.8,8.1,"-","-",1.2)
+    hash["スープ"]["セブン"]= Product_dto.new("セブン","スープ","スープ","生姜香る鶏肉と野菜の和風スープ",298,141,nil,nil,nil,nil,nil,nil,nil)
+    hash["スープ"]["ローソン"]= Product_dto.new("ローソン","スープ","スープ","Lクラムチャウダー",298,141,nil,nil,nil,nil,nil,nil,nil)
+    hash["おにぎり"]["ファミマ"]= Product_dto.new("ファミマ","おにぎり","おにぎり","紀州南高梅",110,183,nil,nil,nil,nil,nil,nil,nil)
+    hash["おにぎり"]["セブン"]= Product_dto.new("セブン","おにぎり","おにぎり","紀州南高梅",110,164,nil,nil,nil,nil,nil,nil,nil)
+    hash["おにぎり"]["ローソン"]= Product_dto.new("ローソン","おにぎり","おにぎり","紀州南高梅",110,164,nil,nil,nil,nil,nil,nil,nil)
+    hash["パン"]["セブン"]= Product_dto.new("セブン","パン","パン","チョコチップスナック",100,89,nil,nil,nil,nil,nil,nil,nil)
+    hash["パン"]["ローソン"]= Product_dto.new("ローソン","パン","パン","チョコチップスティックパン",100,90,nil,nil,nil,nil,nil,nil,nil)
+    hash["パン"]["ファミマ"]= Product_dto.new("ファミマ","パン","パン","チョコチップスナック",100,89,"-",1.9,3.1,13.4,"-","-",58)
     return hash
 　end
 end

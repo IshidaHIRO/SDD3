@@ -1,19 +1,4 @@
   <style type="text/css">
-
-    table{float: right; }
-    table, tr,th,td {
-                      border: solid 1px gray;
-                     }
-
-    td {
-        width: 300px;
-        height: 500px;
-        vertical-align: top;
-        }
-    img{
-      vertical-align: middle;
-      width: 100%;  
-    }
     .grid_black{
      padding:0 15px;
      border-color: black;
@@ -27,7 +12,6 @@
      border-width: 1px 0px 1px 0px;
     }
     .product{ 
-
        margin: 0 auto;
     }
 
@@ -41,9 +25,12 @@
       font-size: 20px;
       color: #800000;      
     }
-    .p_attr{
-      text-align: center;
-      font-size: 14px;
+    dl.dl-horizontal dt{  
+      width:50%;
+      margin-right: 20px;
+    }
+    dl.dl-horizontal dd{
+      margin-left:0px;
     }
     .shadow_famima{
       box-shadow: 0 0 0px 3px #0079c5 inset, 0 0 0px 6px #FFFFFF inset, 0 0 0px 9px #23ac38 inset;
@@ -97,18 +84,26 @@
 <div class="col-xs-12 col-md-4 grid_black shadow_famima">  
 <h3>ファミマ</h3>
         <div class="product">
-          <% if !@product["ファミマ"].image_url.nil? %> 
-          <div class="p_img"><%= image_tag @product["ファミマ"].image_url %></div>
-          <% end %>
           <p class="p_name"><%= @product["ファミマ"].name %></p>
-          <p class="p_attr">税込<%= @product["ファミマ"].price %>円</p>
-          <p class="p_attr"><%= @product["ファミマ"].calorie %>kcal</p>
+          <dl class="dl-horizontal">
+          <dt>税込価格</dt><dd><%= @product["ファミマ"].price %>円</dd>
+          <dt>熱量</dt><dd><%= @product["ファミマ"].calorie %>kcal</dd>
+          <dt>分量</dt><dd><%= @product["ファミマ"].net %>g</dd>
+          <dt>タンパク質</dt><dd><%= @product["ファミマ"].protein %>g</dd>
+          <dt>脂質</dt><dd><%= @product["ファミマ"].fat %>g</dd>
+          <dt>炭水化物</dt><dd><%= @product["ファミマ"].carbon %>g</dd>
+          <dt>糖質</dt><dd><%= @product["ファミマ"].sugar %>g</dd>
+          <dt>食物繊維</dt><dd><%= @product["ファミマ"].fiber %>g</dd>
+          <dt>ナトリウム</dt><dd><%= @product["ファミマ"].sodium %>mg</dd>
+          </dl>
         </div>
-        <%= cache @product["ファミマ"].name ,expires_in:1.hours,skip_digest:true do %> 
-        <div class="tweets">
-          <p class="tw_all">話題数：<%= @tw_cnt_all1  %><br></p>
-          <p class="tw_good">　おいしい：<%= @tw_cnt_good1  %><br></p>
-          <p class="tw_bad">　まずい：<%= @tw_cnt_bad1  %><br></p>
+        <%= cache "ファミマ"+@item ,expires_in:1.hours,skip_digest:true do %> 
+        <div class="tweets"> 
+          <dl class="dl-horizontal">
+          <dt>話題数：</dt><dd><%= @tw_cnt_all1  %><dd>
+          <dt>　おいしい：</dt><dd><%= @tw_cnt_good1  %></dd>
+          <dt>　まずい：</dt><dd><%= @tw_cnt_bad1  %></dd>
+          </dl>
         </div>
         <% end %>
 </div>
@@ -117,17 +112,12 @@
 <h3>セブン</h3>
 
         <div class="product">
-          <% if !@product["セブン"].image_url.nil? %> 
-          <div class="p_img"><%= image_tag @product["セブン"].image_url %></div>
-          <% end %>
           <p class="p_name"><%= @product["セブン"].name %></p>
           <p class="p_attr">税込<%= @product["セブン"].price %>円</p>
           <p class="p_attr"><%= @product["セブン"].calorie %>kcal</p>
-       
-      
         </div>
 
-        <%= cache @product["セブン"].name ,expires_in:1.hours,skip_digest:true do %> 
+        <%= cache "セブン"+@item,expires_in:1.hours,skip_digest:true do %> 
         <div class="tweets">
           <p class="tw_all">話題数：<%= @tw_cnt_all2  %><br></p>
           <p class="tw_good">　おいしい：<%= @tw_cnt_good2  %><br></p>
@@ -138,9 +128,9 @@
   <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
 <h3>ローソン</h3>
         <div class="product">
-          <% if !@product["ローソン"].image_url.nil? %> 
-          <div class="p_img"><%= image_tag @product["ローソン"].image_url %></div>  
-          <% end %>
+
+
+
           <p class="p_name"><%= @product["ローソン"].name %></p>
           <p class="p_attr">税込<%= @product["ローソン"].price %>円</p>
           <p class="p_attr"><%= @product["ローソン"].calorie %>kcal</p>
@@ -148,7 +138,7 @@
        
         </div>
 
-        <%= cache @product["ローソン"].name ,expires_in:1.hours,skip_digest:true do %> 
+        <%= cache "ローソン"+@item ,expires_in:1.hours,skip_digest:true do %> 
         <div class="tweets">
           <p class="tw_all">話題数：<%= @tw_cnt_all3  %><br></p>
           <p class="tw_good">　おいしい：<%= @tw_cnt_good3  %><br></p>
