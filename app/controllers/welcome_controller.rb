@@ -36,6 +36,7 @@ class WelcomeController < ApplicationController
 
     return result_tweets.count    
 
+
   end
   
   def get_product_hash

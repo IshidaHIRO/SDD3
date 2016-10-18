@@ -104,12 +104,13 @@
           <p class="p_attr">税込<%= @product["ファミマ"].price %>円</p>
           <p class="p_attr"><%= @product["ファミマ"].calorie %>kcal</p>
         </div>
-
+        <%= cache @product["ファミマ"].name ,expires_in:1.hours,skip_digest:true do %> 
         <div class="tweets">
           <p class="tw_all">話題数：<%= @tw_cnt_all1  %><br></p>
           <p class="tw_good">　おいしい：<%= @tw_cnt_good1  %><br></p>
           <p class="tw_bad">　まずい：<%= @tw_cnt_bad1  %><br></p>
         </div>
+        <% end %>
 </div>
 
   <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
@@ -126,11 +127,13 @@
       
         </div>
 
+        <%= cache @product["セブン"].name ,expires_in:1.hours,skip_digest:true do %> 
         <div class="tweets">
           <p class="tw_all">話題数：<%= @tw_cnt_all2  %><br></p>
           <p class="tw_good">　おいしい：<%= @tw_cnt_good2  %><br></p>
           <p class="tw_bad">　まずい：<%= @tw_cnt_bad2  %><br></p>
         </div>
+        <% end %>
  </div> 
   <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
 <h3>ローソン</h3>
@@ -145,11 +148,13 @@
        
         </div>
 
+        <%= cache @product["ローソン"].name ,expires_in:1.hours,skip_digest:true do %> 
         <div class="tweets">
           <p class="tw_all">話題数：<%= @tw_cnt_all3  %><br></p>
           <p class="tw_good">　おいしい：<%= @tw_cnt_good3  %><br></p>
           <p class="tw_bad">　まずい：<%= @tw_cnt_bad3  %><br></p>
         </div>
+        <% end %>
 </div>
 </div>
 <% end %>
