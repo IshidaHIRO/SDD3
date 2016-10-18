@@ -5,48 +5,24 @@ class WelcomeController < ApplicationController
     if(item.nil? || item == "") 
       item = "サラダチキン"
     end
-    @result_tw_cnt_all1 = search_tw_cnt_all(item + "　ファミマ") 
-    @result_tw_cnt_all2 = search_tw_cnt_all(item + "　セブンイレブン") 
-    @result_tw_cnt_all3 = search_tw_cnt_all(item + "　ローソン") 
+    @tw_cnt_all1  = get_twitter_cnt(item + "　ファミマ") 
+    @tw_cnt_all2  = get_twitter_cnt(item + "　セブンイレブン") 
+    @tw_cnt_all3  = get_twitter_cnt(item + "　ローソン")
+    @tw_cnt_good1 = get_twitter_cnt(item + "　ファミマ　おいしい")
+    @tw_cnt_good2 = get_twitter_cnt(item + "　セブンイレブン　おいしい")
+    @tw_cnt_good3 = get_twitter_cnt(item + "　ローソン　おいしい")
+    @tw_cnt_bad1  = get_twitter_cnt(item + "　ファミマ　まずい")
+    @tw_cnt_bad2  = get_twitter_cnt(item + "　セブンイレブン　まずい")
+    @tw_cnt_bad3  = get_twitter_cnt(item + "　ローソン　まずい") 
     
     @product = (self.get_product_hash)[item]
 
   end
   
+  def get_twitter_cnt(query)
+    # Twitterキーワード検索結果を返す
 
-  # TODO: Twitter関連はmodel内のクラス化するか
-  # TODO: 暫定で直書き
-
-  # APIの各種Keyの設定
-  @consumconsumer_key  = 'mnDCpUfy63JiypEirQRCgI60W'
-  @consumer_secret     = 'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban'
-  @access_token        = '19013248-gtuzqSQ8jv9VJmtfA9hks8kmJr9jQ33SWzkHMr7Os'
-  @access_token_secret = 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm'
-
-  def search_tw_recent(query)
-    # Twitterキーワード検索（直近）
-    client = Twitter::REST::Client.new(
-      consumer_key:        @consumconsumer_key,
-      consumer_secret:     @consumer_secret,
-      access_token:        @access_token,
-      access_token_secret: @access_token_secret,
-    )
-
-    return client.search(query, count: 3, result_type: "recent", exclude: "retweets", since_id: nil)
-    
-  end
-
-  def search_tw_cnt_all(query)
-
-    tw_cnt = 0
-
-    # Twitterキーワード検索（直近）
-    # client = Twitter::REST::Client.new(
-    #   consumer_key:        @consumconsumer_key,
-    #   consumer_secret:     @consumer_secret,
-    #   access_token:        @access_token,
-    #   access_token_secret: @access_token_secret,
-    # )
+    # TODO: 暫定で直書き
     client = Twitter::REST::Client.new(
       consumer_key:        'mnDCpUfy63JiypEirQRCgI60W',
       consumer_secret:     'ncL91HshIQCgy5vxXJS3qMJqwINbutLkPtMvioqOjeYcIeWban',
@@ -54,31 +30,11 @@ class WelcomeController < ApplicationController
       access_token_secret: 'r3HHV8pHIx9CwBVf6RrDBmfojJMpCNWRBDaCPAe4UA0Pm',
     )
 
-    # TODO:untilをシステム日付から取得する
-    # 初回検索
-    result_tweets = client.search(query, count: 100, result_type: "mixed", exclude: "retweets", since_id: nil, until: "2016-10-15")
+    # 直近１週間のTweet件数を取得
+    query <<  "　since:" + (Date.today - 7).strftime("%Y-%m-%d")
+    result_tweets = client.search(query, count: nil, result_type: "mixed", exclude: "retweets", since_id: nil)
 
-    if result_tweets.attrs[:statuses].size > 0
-
-      tw_cnt += result_tweets.attrs[:statuses].size
-
-      # TODO:検索結果からcreated_atの日付で3日以内とかに絞らないとならない
-
-      # 2ページ目以降の検索
-      while(result_tweets.attrs[:search_metadata][:next_results])
-        # 先頭の?を削除し次ページを検索
-        result_tweets = client.search(result_tweets.attrs[:search_metadata][:next_results].slice!(0)) 
-        if result_tweets.attrs[:statuses].size > 0     
-          tw_cnt += result_tweets.attrs[:statuses].size
-        end
-
-        # TODO:ブレーク条件検討
-        break if tw_cnt > 100
-      end
-
-    end
-
-    return tw_cnt    
+    return result_tweets.count    
 
   end
   

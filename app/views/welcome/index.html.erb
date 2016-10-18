@@ -106,12 +106,9 @@
         </div>
 
         <div class="tweets">
-          <% @result_tweets1.take(3).each do |tw| %> 
-            <p class="tw">
-              <%= tw.user.screen_name  %><br>
-              <%= tw.full_text  %>
-            </p>
-          <% end %>
+          <p class="tw_all">
+            <%= @tw_cnt_all1  %><br>
+          </p>
         </div>
 </div>
 
@@ -130,12 +127,9 @@
         </div>
 
         <div class="tweets">
-          <% @result_tweets2.take(3).each do |tw| %> 
-            <p class="tw">
-              <%= tw.user.screen_name  %><br>
-              <%= tw.full_text  %>
-            </p>
-          <% end %>
+          <p class="tw_all">
+            <%= @tw_cnt_all2  %><br>
+          </p>
         </div>
  </div> 
   <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
@@ -152,12 +146,9 @@
         </div>
 
         <div class="tweets">
-          <% @result_tweets3.take(3).each do |tw| %> 
-            <p class="tw">
-              <%= tw.user.screen_name  %><br>
-              <%= tw.full_text  %>
-            </p>
-          <% end %>
+          <p class="tw_all">
+            <%= @tw_cnt_all3  %><br>
+          </p>
         </div>
 </div>
 </div>
