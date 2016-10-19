@@ -5,15 +5,33 @@ class WelcomeController < ApplicationController
     if(@item.nil? || @item == "") 
       @item = "サラダチキン"
     end
-    @tw_cnt_all1  = get_twitter_cnt(@item + "　ファミマ") 
-    @tw_cnt_all2  = get_twitter_cnt(@item + "　セブンイレブン") 
-    @tw_cnt_all3  = get_twitter_cnt(@item + "　ローソン")
-    @tw_cnt_good1 = get_twitter_cnt(@item + "　ファミマ　おいしい")
-    @tw_cnt_good2 = get_twitter_cnt(@item + "　セブンイレブン　おいしい")
-    @tw_cnt_good3 = get_twitter_cnt(@item + "　ローソン　おいしい")
-    @tw_cnt_bad1  = get_twitter_cnt(@item + "　ファミマ　まずい")
-    @tw_cnt_bad2  = get_twitter_cnt(@item + "　セブンイレブン　まずい")
-    @tw_cnt_bad3  = get_twitter_cnt(@item + "　ローソン　まずい") 
+    @tw_cnt_all1 = Rails.cache.fetch("cnt_all1"+@item) do
+      get_twitter_cnt(@item + "　ファミマ") 
+    end
+    @tw_cnt_all2 = Rails.cache.fetch("cnt_all2"+@item) do 
+      get_twitter_cnt(@item + "　セブンイレブン") 
+    end
+    @tw_cnt_all3 = Rails.cache.fetch("cnt_all3"+@item) do
+      get_twitter_cnt(@item + "　ローソン") 
+    end
+    @tw_cnt_good1= Rails.cache.fetch("cnt_good1"+@item) do 
+      get_twitter_cnt(@item + "　ファミマ　おいしい") 
+    end
+    @tw_cnt_good2=Rails.cache.fetch("cnt_good2"+@item) do
+      get_twitter_cnt(@item + "　セブンイレブン　おいしい") 
+    end
+    @tw_cnt_good3=Rails.cache.fetch("cnt_good3"+@item) do 
+      get_twitter_cnt(@item + "　ローソン　おいしい") 
+    end
+    @tw_cnt_bad1=Rails.cache.fetch("cnt_bad1"+@item) do
+      get_twitter_cnt(@item + "　ファミマ　まずい") 
+    end
+    @tw_cnt_bad2=Rails.cache.fetch("cnt_bad2"+@item) do 
+      get_twitter_cnt(@item + "　セブンイレブン　まずい") 
+    end
+    @tw_cnt_bad3=Rails.cache.fetch("cnt_bad3"+@item) do 
+      get_twitter_cnt(@item + "　ローソン　まずい") 
+    end
     
     @product = (self.get_product_hash)[@item]
 
@@ -51,7 +69,7 @@ class WelcomeController < ApplicationController
     hash["スープ"]["ファミマ"]= Product_dto.new("ファミマ","スープ","スープ","10種具材の豚汁",330,122,"-",9.3,5.8,8.1,"-","-",1.2)
     hash["スープ"]["セブン"]= Product_dto.new("セブン","スープ","スープ","生姜香る鶏肉と野菜の和風スープ",298,141,nil,nil,nil,nil,nil,nil,nil)
     hash["スープ"]["ローソン"]= Product_dto.new("ローソン","スープ","スープ","Lクラムチャウダー",298,141,nil,nil,nil,nil,nil,nil,nil)
-    hash["おにぎり"]["ファミマ"]= Product_dto.new("ファミマ","おにぎり","おにぎり","紀州南高梅",110,183,nil,nil,nil,nil,nil,nil,nil)
+    hash["おにぎり"]["ファミマ"]= Product_dto.new("ファミマ","おにぎり","おにぎり","紀州南高梅",110,183,"-",3.5,0.9,40.1,"-","-",788)
     hash["おにぎり"]["セブン"]= Product_dto.new("セブン","おにぎり","おにぎり","紀州南高梅",110,164,nil,nil,nil,nil,nil,nil,nil)
     hash["おにぎり"]["ローソン"]= Product_dto.new("ローソン","おにぎり","おにぎり","紀州南高梅",110,164,nil,nil,nil,nil,nil,nil,nil)
     hash["パン"]["セブン"]= Product_dto.new("セブン","パン","パン","チョコチップスナック",100,89,nil,nil,nil,nil,nil,nil,nil)

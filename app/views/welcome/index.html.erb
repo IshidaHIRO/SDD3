@@ -97,7 +97,7 @@
           <dt>ナトリウム</dt><dd><%= @product["ファミマ"].sodium %>mg</dd>
           </dl>
         </div>
-        <%= cache "ファミマ"+@item ,expires_in:1.hours,skip_digest:true do %> 
+  
         <div class="tweets"> 
           <dl class="dl-horizontal">
           <dt>話題数：</dt><dd><%= @tw_cnt_all1  %><dd>
@@ -105,7 +105,7 @@
           <dt>　まずい：</dt><dd><%= @tw_cnt_bad1  %></dd>
           </dl>
         </div>
-        <% end %>
+ 
 </div>
 
   <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
@@ -113,38 +113,53 @@
 
         <div class="product">
           <p class="p_name"><%= @product["セブン"].name %></p>
-          <p class="p_attr">税込<%= @product["セブン"].price %>円</p>
-          <p class="p_attr"><%= @product["セブン"].calorie %>kcal</p>
+          <dl class="dl-horizontal">
+          <dt>税込価格</dt><dd><%= @product["セブン"].price %>円</dd>
+          <dt>熱量</dt><dd><%= @product["セブン"].calorie %>kcal</dd>
+          <dt>分量</dt><dd><%= @product["セブン"].net %>g</dd>
+          <dt>タンパク質</dt><dd><%= @product["セブン"].protein %>g</dd>
+          <dt>脂質</dt><dd><%= @product["セブン"].fat %>g</dd>
+          <dt>炭水化物</dt><dd><%= @product["セブン"].carbon %>g</dd>
+          <dt>糖質</dt><dd><%= @product["セブン"].sugar %>g</dd>
+          <dt>食物繊維</dt><dd><%= @product["セブン"].fiber %>g</dd>
+          <dt>ナトリウム</dt><dd><%= @product["セブン"].sodium %>mg</dd>
+          </dl>
+        </div>
+  
+        <div class="tweets"> 
+          <dl class="dl-horizontal">
+          <dt>話題数：</dt><dd><%= @tw_cnt_all2  %><dd>
+          <dt>　おいしい：</dt><dd><%= @tw_cnt_good2  %></dd>
+          <dt>　まずい：</dt><dd><%= @tw_cnt_bad2  %></dd>
+          </dl>
         </div>
 
-        <%= cache "セブン"+@item,expires_in:1.hours,skip_digest:true do %> 
-        <div class="tweets">
-          <p class="tw_all">話題数：<%= @tw_cnt_all2  %><br></p>
-          <p class="tw_good">　おいしい：<%= @tw_cnt_good2  %><br></p>
-          <p class="tw_bad">　まずい：<%= @tw_cnt_bad2  %><br></p>
-        </div>
-        <% end %>
  </div> 
   <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
-<h3>ローソン</h3>
-        <div class="product">
-
-
-
+<h3>ローソン</h3>      
+         <div class="product">
           <p class="p_name"><%= @product["ローソン"].name %></p>
-          <p class="p_attr">税込<%= @product["ローソン"].price %>円</p>
-          <p class="p_attr"><%= @product["ローソン"].calorie %>kcal</p>
-        
-       
+          <dl class="dl-horizontal">
+          <dt>税込価格</dt><dd><%= @product["ローソン"].price %>円</dd>
+          <dt>熱量</dt><dd><%= @product["ローソン"].calorie %>kcal</dd>
+          <dt>分量</dt><dd><%= @product["ローソン"].net %>g</dd>
+          <dt>タンパク質</dt><dd><%= @product["ローソン"].protein %>g</dd>
+          <dt>脂質</dt><dd><%= @product["ローソン"].fat %>g</dd>
+          <dt>炭水化物</dt><dd><%= @product["ローソン"].carbon %>g</dd>
+          <dt>糖質</dt><dd><%= @product["ローソン"].sugar %>g</dd>
+          <dt>食物繊維</dt><dd><%= @product["ローソン"].fiber %>g</dd>
+          <dt>ナトリウム</dt><dd><%= @product["ローソン"].sodium %>mg</dd>
+          </dl>
+        </div>
+  
+        <div class="tweets"> 
+          <dl class="dl-horizontal">
+          <dt>話題数：</dt><dd><%= @tw_cnt_all3  %><dd>
+          <dt>　おいしい：</dt><dd><%= @tw_cnt_good3  %></dd>
+          <dt>　まずい：</dt><dd><%= @tw_cnt_bad3  %></dd>
+          </dl>
         </div>
 
-        <%= cache "ローソン"+@item ,expires_in:1.hours,skip_digest:true do %> 
-        <div class="tweets">
-          <p class="tw_all">話題数：<%= @tw_cnt_all3  %><br></p>
-          <p class="tw_good">　おいしい：<%= @tw_cnt_good3  %><br></p>
-          <p class="tw_bad">　まずい：<%= @tw_cnt_bad3  %><br></p>
-        </div>
-        <% end %>
 </div>
 </div>
 <% end %>
