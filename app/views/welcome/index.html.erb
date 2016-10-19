@@ -1,5 +1,8 @@
   <style type="text/css">
 
+    body{
+      -webkit-text-size-adjust: 100%;
+    }
     table{float: right; }
     table, tr,th,td {
                       border: solid 1px gray;
@@ -14,6 +17,15 @@
       vertical-align: middle;
       width: 100%;  
     }
+    .title1{
+      text-align: center;
+      font-family: fantasy;
+      font-size: 2.5em;
+    }
+    .title2{
+      text-align: center;
+      font-size: 1.5em;
+    }
     .grid_black{
      padding:0 15px;
      border-color: black;
@@ -27,7 +39,6 @@
      border-width: 1px 0px 1px 0px;
     }
     .product{ 
-
        margin: 0 auto;
     }
 
@@ -38,12 +49,12 @@
     }
     .p_name{
       text-align: center;
-      font-size: 20px;
+      font-size: 2em;
       color: #800000;      
     }
     .p_attr{
       text-align: center;
-      font-size: 14px;
+      font-size: 1.5em;
     }
     .shadow_famima{
       box-shadow: 0 0 0px 3px #0079c5 inset, 0 0 0px 6px #FFFFFF inset, 0 0 0px 9px #23ac38 inset;
@@ -54,23 +65,44 @@
     .shadow_seven{
       box-shadow: 0 0 0 2px #ee7620 inset, 0 0 0 3px #FFFFFF inset, 0 0 0 6px #11582c inset, 0 0 0 7px #FFFFFF inset, 0 0 0 9px #aa1f24 inset;
     }
+    .dd-width{
+      width: 100%;
+    }
+/* スマホのスタイル*/
 
+
+/* タブレットのスタイル*/
+@media all and (min-width: 480px){
+  .title1{
+    font-size: 4em;
+  }
+
+  .title2{
+    font-size: 2.5em;
+  }
+
+}
+
+/* PCのスタイル*/
+@media all and (min-width: 768px){
+
+}
   </style>
 
-<h1 style="text-align: center; font: fantasy; font-size: 64px;">twentyfour-seven</h1>
-<h2 style="text-align: center;">コンビニ3社の商品を比較するよ</h2>
+<h1 class="title1">twentyfour-seven</h1>
+<h2 class="title2">コンビニ3社の商品を比較するよ</h2>
 
 <div class="container">
 <div class="row row-eq-height">
 <div class="col-xs-12 col-md-2">
  <div class="dropdown" >
     <!-- デフォルト表示部分 -->
-    <a class="btn btn-default dropdown-toggle" id="sample-menu-2" data-toggle="dropdown">
+    <a class="btn btn-default dropdown-toggle dd-width" id="sample-menu-2" data-toggle="dropdown">
           商品選択メニュー<span class="caret"></span>
         </a>
         
         <!-- リスト部分 -->
-        <ul class="dropdown-menu" role="menu" aria-labelledby="sample-menu-2">
+        <ul class="dropdown-menu dd-width" role="menu" aria-labelledby="sample-menu-2">
           <li role="presentation" class="dropdown-header">チキン</li> 
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダチキン">サラダチキン</a></li>
           <li role="presentation" class="divider"></li>
