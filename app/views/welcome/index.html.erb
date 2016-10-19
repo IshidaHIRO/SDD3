@@ -1,5 +1,9 @@
   <style type="text/css">
 
+    body{
+      -webkit-text-size-adjust: 100%;
+    }
+
     table{float: right; }
     table, tr,th,td {
                       border: solid 1px gray;
@@ -54,7 +58,9 @@
     .shadow_seven{
       box-shadow: 0 0 0 2px #ee7620 inset, 0 0 0 3px #FFFFFF inset, 0 0 0 6px #11582c inset, 0 0 0 7px #FFFFFF inset, 0 0 0 9px #aa1f24 inset;
     }
-
+    .dd-width{
+      width: 100%;
+    }
   </style>
 
 <h1 style="text-align: center; font: fantasy; font-size: 64px;">twentyfour-seven</h1>
@@ -65,12 +71,12 @@
 <div class="col-xs-12 col-md-2">
  <div class="dropdown" >
     <!-- デフォルト表示部分 -->
-    <a class="btn btn-default dropdown-toggle" id="sample-menu-2" data-toggle="dropdown">
+    <a class="btn btn-default dropdown-toggle dd-width" id="sample-menu-2" data-toggle="dropdown">
           商品選択メニュー<span class="caret"></span>
         </a>
         
         <!-- リスト部分 -->
-        <ul class="dropdown-menu" role="menu" aria-labelledby="sample-menu-2">
+        <ul class="dropdown-menu dd-width" role="menu" aria-labelledby="sample-menu-2">
           <li role="presentation" class="dropdown-header">チキン</li> 
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダチキン">サラダチキン</a></li>
           <li role="presentation" class="divider"></li>
