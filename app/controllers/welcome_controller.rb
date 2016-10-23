@@ -8,31 +8,31 @@ class WelcomeController < ApplicationController
     @product = (self.get_product_hash)[item]
     
     @product["ファミマ"].tweets_count_all= Rails.cache.fetch("cnt_all1"+item) do
-      get_twitter_cnt(item + "　ファミマ") 
+      get_twitter_cnt(@product["ファミマ"].name + "　ファミマ") 
     end
     @product["セブン"].tweets_count_all = Rails.cache.fetch("cnt_all2"+item) do 
-      get_twitter_cnt(item + "　セブンイレブン") 
+      get_twitter_cnt(@product["セブン"].name + "　セブンイレブン") 
     end
     @product["ローソン"].tweets_count_all = Rails.cache.fetch("cnt_all3"+item) do
-      get_twitter_cnt(item + "　ローソン") 
+      get_twitter_cnt(@product["ローソン"].name + "　ローソン") 
     end
     @product["ファミマ"].tweets_count_good= Rails.cache.fetch("cnt_good1"+item) do 
-      get_twitter_cnt(item + "　ファミマ　おいしい") 
+      get_twitter_cnt(@product["ファミマ"].name + "　ファミマ　おいしい") 
     end
     @product["セブン"].tweets_count_good=Rails.cache.fetch("cnt_good2"+item) do
-      get_twitter_cnt(item + "　セブンイレブン　おいしい") 
+      get_twitter_cnt(@product["セブン"].name + "　セブンイレブン　おいしい") 
     end
     @product["ローソン"].tweets_count_good=Rails.cache.fetch("cnt_good3"+item) do 
-      get_twitter_cnt(item + "　ローソン　おいしい") 
+      get_twitter_cnt(@product["ローソン"].name + "　ローソン　おいしい") 
     end
     @product["ファミマ"].tweets_count_bad=Rails.cache.fetch("cnt_bad1"+item) do
-      get_twitter_cnt(item + "　ファミマ　まずい") 
+      get_twitter_cnt(@product["ファミマ"].name + "　ファミマ　まずい") 
     end
     @product["セブン"].tweets_count_bad=Rails.cache.fetch("cnt_bad2"+item) do 
-      get_twitter_cnt(item + "　セブンイレブン　まずい") 
+      get_twitter_cnt(@product["セブン"].name + "　セブンイレブン　まずい") 
     end
     @product["ローソン"].tweets_count_bad=Rails.cache.fetch("cnt_bad3"+item) do 
-      get_twitter_cnt(item + "　ローソン　まずい") 
+      get_twitter_cnt(@product["ローソン"].name + "　ローソン　まずい") 
     end
     
 
