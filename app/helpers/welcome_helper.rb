@@ -67,7 +67,17 @@ module WelcomeHelper
           concat content_tag(:dd,emphasize_most(target.fiber,val1.fiber,val2.fiber)+"g")
           concat content_tag(:dt,"ナトリウム")
           concat content_tag(:dd,emphasize_most(target.sodium,val1.sodium,val2.sodium)+"mg")
-      end)
+       end)
+       concat (content_tag(:div,:class=>"tweets") do
+          content_tag(:dl, :class=>"dl-horizontal") do
+            concat content_tag(:dt,"話題数")
+            concat content_tag(:dd,emphasize_most(target.tweets_count_all,val1.tweets_count_all,val2.tweets_count_all))
+            concat content_tag(:dt,"おいしい")
+            concat content_tag(:dd,emphasize_most(target.tweets_count_good,val1.tweets_count_good,val2.tweets_count_bad))
+            concat content_tag(:dt,"まずい")
+            concat content_tag(:dd,emphasize_least(target.tweets_count_bad,val1.tweets_count_bad,val2.tweets_count_bad)) 
+          end
+       end)
      end
    end
 end

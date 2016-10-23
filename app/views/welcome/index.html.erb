@@ -1,4 +1,4 @@
-  <style type="text/css">
+<style type="text/css">
     body{
       -webkit-text-size-adjust: 100%;
     }
@@ -75,17 +75,17 @@
 @media all and (min-width: 768px){
 
 }
-  </style>
+</style>
 
 <h1 class="title1">twentyfour-seven</h1>
 <h2 class="title2">コンビニ3社の商品を比較するよ</h2>
 
 <div class="container">
-<div class="row row-eq-height">
-<div class="col-xs-12 col-md-2">
- <div class="dropdown" >
-    <!-- デフォルト表示部分 -->
-    <a class="btn btn-default dropdown-toggle dd-width" id="sample-menu-2" data-toggle="dropdown">
+  <div class="row row-eq-height">
+    <div class="col-xs-12 col-md-2">
+      <div class="dropdown" >
+      <!-- デフォルト表示部分 -->
+        <a class="btn btn-default dropdown-toggle dd-width" id="sample-menu-2" data-toggle="dropdown">
           商品選択メニュー<span class="caret"></span>
         </a>
         
@@ -104,7 +104,6 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（梅）">おにぎり（梅）</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（ツナ）">おにぎり（ツナ）</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（昆布）">おにぎり（昆布）</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（鮭）">おにぎり（鮭）</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（納豆巻き）">おにぎり（納豆巻き）</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">パン</li> 
@@ -115,55 +114,29 @@
           <li role="presentation" class="divider"></li>
        </ul>
       </div> 
+    </div>
+    <div class="col-xs-12 col-md-9 row-eq-height">
+      <% if @product["ファミマ"].nil? %>
+        <p>選択した商品が見つかりませんでした</p>
+      <% end %>
+      <% if !@product["ファミマ"].nil? %>
+        <div class="col-xs-12 col-md-4 grid_black shadow_famima">  
+          <h3>ファミマ</h3>
+          <%= print_product(@product["ファミマ"],@product["セブン"] ,@product["ローソン"] ) %>
+        </div>
+        <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
+          <h3>セブン</h3>
+          <%= print_product(@product["セブン"] ,@product["ファミマ"] ,@product["ローソン"] ) %>
+        </div>
+        <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
+          <h3>ローソン</h3>      
+          <%= print_product(@product["ローソン"] ,@product["セブン"] ,@product["ファミマ"] ) %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<div class="col-xs-12 col-md-9 row-eq-height">
-<% if @product["ファミマ"].nil? %>
-<p>選択した商品が見つかりませんでした</p>
-<% end %>
-<% if !@product["ファミマ"].nil? %>
-<div class="col-xs-12 col-md-4 grid_black shadow_famima">  
-<h3>ファミマ</h3>
-<%= print_product(@product["ファミマ"],@product["セブン"] ,@product["ローソン"] ) %>
-        <div class="tweets"> 
-          <dl class="dl-horizontal">
-          <dt>話題数：</dt><dd><%= @tw_cnt_all1  %><dd>
-          <dt>　おいしい：</dt><dd><%= @tw_cnt_good1  %></dd>
-          <dt>　まずい：</dt><dd><%= @tw_cnt_bad1  %></dd>
-          </dl>
-        </div>
- 
-</div>
-
-  <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
-<h3>セブン</h3>
-<%= print_product(@product["セブン"] ,@product["ファミマ"] ,@product["ローソン"] ) %>
   
-        <div class="tweets"> 
-          <dl class="dl-horizontal">
-          <dt>話題数：</dt><dd><%= @tw_cnt_all2  %><dd>
-          <dt>　おいしい：</dt><dd><%= @tw_cnt_good2  %></dd>
-          <dt>　まずい：</dt><dd><%= @tw_cnt_bad2  %></dd>
-          </dl>
-        </div>
-
- </div> 
-  <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
-<h3>ローソン</h3>      
-<%= print_product(@product["ローソン"] ,@product["セブン"] ,@product["ファミマ"] ) %>
-  
-        <div class="tweets"> 
-          <dl class="dl-horizontal">
-          <dt>話題数：</dt><dd><%= @tw_cnt_all3  %><dd>
-          <dt>　おいしい：</dt><dd><%= @tw_cnt_good3  %></dd>
-          <dt>　まずい：</dt><dd><%= @tw_cnt_bad3  %></dd>
-          </dl>
-        </div>
-
-</div>
-</div>
-<% end %>
-</div>
-
-<div>
-   <%  ##link_to 'リンク先へジャンプ', '/countries/' %>
+  <div>
+    <%  ##link_to 'リンク先へジャンプ', '/countries/' %>
+  </div>
 </div>
