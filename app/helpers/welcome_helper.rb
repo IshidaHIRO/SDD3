@@ -66,7 +66,7 @@ module WelcomeHelper
           concat content_tag(:dt,"食物繊維")
           concat content_tag(:dd,emphasize_most(target.fiber,val1.fiber,val2.fiber)+"g")
           concat content_tag(:dt,"ナトリウム")
-          concat content_tag(:dd,emphasize_most(target.sodium,val1.sodium,val2.sodium)+"mg")
+          concat content_tag(:dd,emphasize_least(target.sodium,val1.sodium,val2.sodium)+"mg")
        end)
        concat (content_tag(:div,:class=>"tweets") do
           content_tag(:dl, :class=>"dl-horizontal") do
