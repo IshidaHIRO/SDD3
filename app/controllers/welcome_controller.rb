@@ -1,39 +1,44 @@
 class WelcomeController < ApplicationController
 
   def index
-    @item = params[:item]
-    if(@item.nil? || @item == "") 
-      @item = "サラダチキン"
+    item = params[:item]
+    if(item.nil? || item == "") 
+      item = "サラダチキン"
     end
-    @tw_cnt_all1 = Rails.cache.fetch("cnt_all1"+@item) do
-      get_twitter_cnt(@item + "　ファミマ") 
+    @product = (self.get_product_hash)[item]
+    if(!@product["ファミマ"].nil?)
+      @product["ファミマ"].tweets_count_all= Rails.cache.fetch("cnt_all1"+item) do
+        get_twitter_cnt(item + "　ファミマ") 
+      end
+      @product["ファミマ"].tweets_count_good= Rails.cache.fetch("cnt_good1"+item) do 
+        get_twitter_cnt(item + "　ファミマ　おいしい") 
+      end
+      @product["ファミマ"].tweets_count_bad=Rails.cache.fetch("cnt_bad1"+item) do
+        get_twitter_cnt(item + "　ファミマ　まずい") 
+      end
     end
-    @tw_cnt_all2 = Rails.cache.fetch("cnt_all2"+@item) do 
-      get_twitter_cnt(@item + "　セブンイレブン") 
+    if(!@product["セブン"].nil?)
+      @product["セブン"].tweets_count_all = Rails.cache.fetch("cnt_all2"+item) do 
+        get_twitter_cnt(item + "　セブンイレブン") 
+      end
+      @product["セブン"].tweets_count_good=Rails.cache.fetch("cnt_good2"+item) do
+        get_twitter_cnt(item + "　セブンイレブン　おいしい") 
+      end
+      @product["セブン"].tweets_count_bad=Rails.cache.fetch("cnt_bad2"+item) do 
+        get_twitter_cnt(item + "　セブンイレブン　まずい") 
+      end
     end
-    @tw_cnt_all3 = Rails.cache.fetch("cnt_all3"+@item) do
-      get_twitter_cnt(@item + "　ローソン") 
+    if(!@product["ローソン"].nil?)
+      @product["ローソン"].tweets_count_all = Rails.cache.fetch("cnt_all3"+item) do
+        get_twitter_cnt(item + "　ローソン") 
+      end
+      @product["ローソン"].tweets_count_good=Rails.cache.fetch("cnt_good3"+item) do 
+        get_twitter_cnt(item + "　ローソン　おいしい") 
+      end
+      @product["ローソン"].tweets_count_bad=Rails.cache.fetch("cnt_bad3"+item) do 
+        get_twitter_cnt(item + "　ローソン　まずい") 
+      end
     end
-    @tw_cnt_good1= Rails.cache.fetch("cnt_good1"+@item) do 
-      get_twitter_cnt(@item + "　ファミマ　おいしい") 
-    end
-    @tw_cnt_good2=Rails.cache.fetch("cnt_good2"+@item) do
-      get_twitter_cnt(@item + "　セブンイレブン　おいしい") 
-    end
-    @tw_cnt_good3=Rails.cache.fetch("cnt_good3"+@item) do 
-      get_twitter_cnt(@item + "　ローソン　おいしい") 
-    end
-    @tw_cnt_bad1=Rails.cache.fetch("cnt_bad1"+@item) do
-      get_twitter_cnt(@item + "　ファミマ　まずい") 
-    end
-    @tw_cnt_bad2=Rails.cache.fetch("cnt_bad2"+@item) do 
-      get_twitter_cnt(@item + "　セブンイレブン　まずい") 
-    end
-    @tw_cnt_bad3=Rails.cache.fetch("cnt_bad3"+@item) do 
-      get_twitter_cnt(@item + "　ローソン　まずい") 
-    end
-    
-    @product = (self.get_product_hash)[@item]
 
   end
   

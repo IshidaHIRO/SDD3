@@ -1,4 +1,4 @@
-  <style type="text/css">
+<style type="text/css">
     body{
       -webkit-text-size-adjust: 100%;
     }
@@ -11,6 +11,11 @@
       text-align: center;
       font-size: 1.5em;
     }
+    span.first{
+      font-weight:bold;
+      color:red;
+    }
+    
     .grid_black{
      padding:0 15px;
      border-color: black;
@@ -25,12 +30,6 @@
     }
     .product{ 
        margin: 0 auto;
-    }
-
-    .p_img{
-       height: 250px;
-       vertical-align: middle;
-       line-height: 250px;
     }
     .p_name{
       text-align: center;
@@ -76,17 +75,17 @@
 @media all and (min-width: 768px){
 
 }
-  </style>
+</style>
 
 <h1 class="title1">twentyfour-seven</h1>
 <h2 class="title2">コンビニ3社の商品を比較するよ</h2>
 
 <div class="container">
-<div class="row row-eq-height">
-<div class="col-xs-12 col-md-2">
- <div class="dropdown" >
-    <!-- デフォルト表示部分 -->
-    <a class="btn btn-default dropdown-toggle dd-width" id="sample-menu-2" data-toggle="dropdown">
+  <div class="row row-eq-height">
+    <div class="col-xs-12 col-md-2">
+      <div class="dropdown" >
+      <!-- デフォルト表示部分 -->
+        <a class="btn btn-default dropdown-toggle dd-width" id="sample-menu-2" data-toggle="dropdown">
           商品選択メニュー<span class="caret"></span>
         </a>
         
@@ -105,7 +104,6 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（梅）">おにぎり（梅）</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（ツナ）">おにぎり（ツナ）</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（昆布）">おにぎり（昆布）</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（鮭）">おにぎり（鮭）</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（納豆巻き）">おにぎり（納豆巻き）</a></li>
           <li role="presentation" class="divider"></li>
           <li role="presentation" class="dropdown-header">パン</li> 
@@ -116,96 +114,28 @@
           <li role="presentation" class="divider"></li>
        </ul>
       </div> 
+    </div>
+    <div class="col-xs-12 col-md-9 row-eq-height">
+      <% if @product["ファミマ"].nil? %>
+        <p class="not_found">選択した商品が見つかりませんでした</p>
+      <% end %>
+      <% if !@product["ファミマ"].nil? %>
+        <div class="col-xs-12 col-md-4 grid_black shadow_famima">  
+          <h3>ファミマ</h3>
+          <%= print_product(@product["ファミマ"],@product["セブン"] ,@product["ローソン"] ) %>
+        </div>
+        <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
+          <h3>セブン</h3>
+          <%= print_product(@product["セブン"] ,@product["ファミマ"] ,@product["ローソン"] ) %>
+        </div>
+        <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
+          <h3>ローソン</h3>      
+          <%= print_product(@product["ローソン"] ,@product["セブン"] ,@product["ファミマ"] ) %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<div class="col-xs-12 col-md-9 row-eq-height">
-<% if @product["ファミマ"].nil? %>
-<p>選択した商品が見つかりませんでした</p>
-<% end %>
-<% if !@product["ファミマ"].nil? %>
-<div class="col-xs-12 col-md-4 grid_black shadow_famima">  
-<h3>ファミマ</h3>
-        <div class="product">
-          <p class="p_name"><%= @product["ファミマ"].name %></p>
-          <dl class="dl-horizontal">
-          <dt>税込価格</dt><dd><%= @product["ファミマ"].price %>円</dd>
-          <dt>熱量</dt><dd><%= @product["ファミマ"].calorie %>kcal</dd>
-          <dt>分量</dt><dd><%= @product["ファミマ"].net %>g</dd>
-          <dt>タンパク質</dt><dd><%= @product["ファミマ"].protein %>g</dd>
-          <dt>脂質</dt><dd><%= @product["ファミマ"].fat %>g</dd>
-          <dt>炭水化物</dt><dd><%= @product["ファミマ"].carbon %>g</dd>
-          <dt>糖質</dt><dd><%= @product["ファミマ"].sugar %>g</dd>
-          <dt>食物繊維</dt><dd><%= @product["ファミマ"].fiber %>g</dd>
-          <dt>ナトリウム</dt><dd><%= @product["ファミマ"].sodium %>mg</dd>
-          </dl>
-        </div>
   
-        <div class="tweets"> 
-          <dl class="dl-horizontal">
-          <dt>話題数：</dt><dd><%= @tw_cnt_all1  %><dd>
-          <dt>　おいしい：</dt><dd><%= @tw_cnt_good1  %></dd>
-          <dt>　まずい：</dt><dd><%= @tw_cnt_bad1  %></dd>
-          </dl>
-        </div>
- 
-</div>
-
-  <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
-<h3>セブン</h3>
-
-        <div class="product">
-          <p class="p_name"><%= @product["セブン"].name %></p>
-          <dl class="dl-horizontal">
-          <dt>税込価格</dt><dd><%= @product["セブン"].price %>円</dd>
-          <dt>熱量</dt><dd><%= @product["セブン"].calorie %>kcal</dd>
-          <dt>分量</dt><dd><%= @product["セブン"].net %>g</dd>
-          <dt>タンパク質</dt><dd><%= @product["セブン"].protein %>g</dd>
-          <dt>脂質</dt><dd><%= @product["セブン"].fat %>g</dd>
-          <dt>炭水化物</dt><dd><%= @product["セブン"].carbon %>g</dd>
-          <dt>糖質</dt><dd><%= @product["セブン"].sugar %>g</dd>
-          <dt>食物繊維</dt><dd><%= @product["セブン"].fiber %>g</dd>
-          <dt>ナトリウム</dt><dd><%= @product["セブン"].sodium %>mg</dd>
-          </dl>
-        </div>
-  
-        <div class="tweets"> 
-          <dl class="dl-horizontal">
-          <dt>話題数：</dt><dd><%= @tw_cnt_all2  %><dd>
-          <dt>　おいしい：</dt><dd><%= @tw_cnt_good2  %></dd>
-          <dt>　まずい：</dt><dd><%= @tw_cnt_bad2  %></dd>
-          </dl>
-        </div>
-
- </div> 
-  <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
-<h3>ローソン</h3>      
-         <div class="product">
-          <p class="p_name"><%= @product["ローソン"].name %></p>
-          <dl class="dl-horizontal">
-          <dt>税込価格</dt><dd><%= @product["ローソン"].price %>円</dd>
-          <dt>熱量</dt><dd><%= @product["ローソン"].calorie %>kcal</dd>
-          <dt>分量</dt><dd><%= @product["ローソン"].net %>g</dd>
-          <dt>タンパク質</dt><dd><%= @product["ローソン"].protein %>g</dd>
-          <dt>脂質</dt><dd><%= @product["ローソン"].fat %>g</dd>
-          <dt>炭水化物</dt><dd><%= @product["ローソン"].carbon %>g</dd>
-          <dt>糖質</dt><dd><%= @product["ローソン"].sugar %>g</dd>
-          <dt>食物繊維</dt><dd><%= @product["ローソン"].fiber %>g</dd>
-          <dt>ナトリウム</dt><dd><%= @product["ローソン"].sodium %>mg</dd>
-          </dl>
-        </div>
-  
-        <div class="tweets"> 
-          <dl class="dl-horizontal">
-          <dt>話題数：</dt><dd><%= @tw_cnt_all3  %><dd>
-          <dt>　おいしい：</dt><dd><%= @tw_cnt_good3  %></dd>
-          <dt>　まずい：</dt><dd><%= @tw_cnt_bad3  %></dd>
-          </dl>
-        </div>
-
-</div>
-</div>
-<% end %>
-</div>
-
 <div class="request_form" align="right" >
    <%= link_to '商品の追加依頼はこちらへ', 'https://goo.gl/forms/8ChjArd8wYdEAwwF3' ,target:"_blank" %>
 </div>
