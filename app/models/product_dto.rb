@@ -1,7 +1,7 @@
 class Product_dto 
   include ActiveModel::Model
   
-  attr_accessor :shop,:category,:item,:name,:price,:calorie,:net,:protein,:fat,:carbon,:sugar,:fiber,:sodium
+  attr_accessor :shop,:category,:item,:name,:price,:calorie,:net,:protein,:fat,:carbon,:sugar,:fiber,:sodium,:tweets_count_all,:tweets_count_good,:tweets_count_bad
   
   def initialize(shop,category,item,name,price,calorie,net,protein,fat,carbon,sugar,fiber,sodium)
     @shop=shop
