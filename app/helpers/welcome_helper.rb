@@ -46,9 +46,9 @@ module WelcomeHelper
   end
   
   def print_product(target,val1,val2)
-     content_tag(:div, :class => 'product', :id => 'accordion') do
-       concat content_tag(:a, target.name,:class => 'p_name', :"data-toggle" => 'collapse', :"data-parent" => '#accordion', :href => '#collapseOne')
-       concat (content_tag(:div, :class => 'spec', :id => 'collapseOne') do 
+     content_tag(:div, :class => 'product', :id => 'accordion'+target.shop) do
+       concat content_tag(:a, target.name,:class => 'p_name', :"data-toggle" => 'collapse', :"data-parent" => '#accordion'+target.shop, :href => '#collapseOne'+target.shop)
+       concat (content_tag(:div, :class => 'spec', :id => 'collapseOne'+target.shop) do 
 	 concat (content_tag(:dl ,:class => 'dl-horizontal') do
 	    concat content_tag(:dt,"税込価格")
 	    concat content_tag(:dd,self.emphasize_least(target.price,val1.price,val2.price) + "円")
