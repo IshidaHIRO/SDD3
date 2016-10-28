@@ -90,7 +90,7 @@ class WelcomeController < ApplicationController
     hash["おにぎり（昆布）"]["セブン"]= Product_dto.new("セブン","おにぎり","おにぎり（昆布）","日高昆布",110,179,nil,3.5,0.4,40.3,nil,nil,333)
     hash["おにぎり（昆布）"]["ローソン"]= Product_dto.new("ローソン","おにぎり","おにぎり（昆布）","日高昆布",110,173,nil,3.7,1.0,37.4,nil,nil,590)
     hash["おにぎり（納豆巻き）"]["ファミマ"]= Product_dto.new("ファミマ","おにぎり","おにぎり（納豆巻き）","納豆",130,nil,nil,nil,nil,nil,nil,nil,nil)
-    hash["おにぎり（納豆巻き）"]["セブン"]= Product_dto.new("セブン","おにぎり","おにぎり（納豆巻き）",nil,nil,nil,nil,nil,nil,nil,nil,nil,nil)
+    hash["おにぎり（納豆巻き）"]["セブン"]= Product_dto.new("セブン","おにぎり","おにぎり（納豆巻き）","-",nil,nil,nil,nil,nil,nil,nil,nil,nil)
     hash["おにぎり（納豆巻き）"]["ローソン"]= Product_dto.new("ローソン","おにぎり","おにぎり（納豆巻き）","納豆",130,184,nil,5.3,2.0,35.9,nil,nil,490)
     hash["パン"]["ファミマ"]= Product_dto.new("ファミマ","パン","パン","チョコチップスナック",100,89,nil,1.9,3.1,13.4,nil,nil,58)
     hash["パン"]["セブン"]= Product_dto.new("セブン","パン","パン","チョコチップスナック",100,89,nil,nil,nil,nil,nil,nil,nil)
