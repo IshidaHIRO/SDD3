@@ -81,7 +81,7 @@ class WelcomeControllerTest < ActionController::TestCase
     get :index,{"item"=>"おにぎり（納豆巻き）"}
     assert_response :success 
     assert_select "div.shadow_famima div.product p.p_name" ,"納豆"
-    assert_select "div.shadow_seven div.product p.p_name" ,"-"
+    assert_select "div.shadow_seven div.product p.p_name" ,nil
     assert_select "div.shadow_lawson div.product p.p_name" ,"納豆"
     assert_select "span.first"
   end  
