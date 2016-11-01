@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Comparisons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>User</th>
+      <th>Comparison</th>
+      <th>Point type</th>
+      <th>Point</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comparisons.each do |comparison| %>
+      <tr>
+        <td><%= comparison.item_id %></td>
+        <td><%= comparison.user %></td>
+        <td><%= comparison.comparison %></td>
+        <td><%= comparison.point_type %></td>
+        <td><%= comparison.point %></td>
+        <td><%= comparison.comment %></td>
+        <td><%= link_to 'Show', comparison %></td>
+        <td><%= link_to 'Edit', edit_comparison_path(comparison) %></td>
+        <td><%= link_to 'Destroy', comparison, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Comparison', new_comparison_path %>

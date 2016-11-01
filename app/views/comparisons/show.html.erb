@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @comparison.item_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @comparison.user %>
+</p>
+
+<p>
+  <strong>Comparison:</strong>
+  <%= @comparison.comparison %>
+</p>
+
+<p>
+  <strong>Point type:</strong>
+  <%= @comparison.point_type %>
+</p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @comparison.point %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @comparison.comment %>
+</p>
+
+<%= link_to 'Edit', edit_comparison_path(@comparison) %> |
+<%= link_to 'Back', comparisons_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 1
+  user: MyString
+  comparison: MyString
+  point_type: 1
+  point: 1
+  comment: MyText
+
+two:
+  item_id: 1
+  user: MyString
+  comparison: MyString
+  point_type: 1
+  point: 1
+  comment: MyText
