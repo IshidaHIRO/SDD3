@@ -122,6 +122,7 @@
         <p class="not_found">選択した商品が見つかりませんでした</p>
       <% end %>
       <% if !@product["ファミマ"].nil? %>
+        <%= link_to 'この商品への新しい比較軸を投稿したい方はこちら', '/comparisons/new' ,target:"_blank" %>
         <div class="col-xs-12 col-md-4 grid_black shadow_famima">  
           <h3>ファミマ</h3>
           <%= print_product(@product["ファミマ"],@product["セブン"] ,@product["ローソン"] ) %>
