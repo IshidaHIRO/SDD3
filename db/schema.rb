@@ -11,9 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161103123106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comparisons", force: :cascade do |t|
+    t.string   "category"
+    t.string   "item"
+    t.string   "user"
+    t.string   "comparison"
+    t.integer  "point_type"
+    t.integer  "point1"
+    t.text     "comment1"
+    t.integer  "point2"
+    t.text     "comment2"
+    t.integer  "point3"
+    t.text     "comment3"
+    t.integer  "good"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "shop"
+    t.string   "category"
+    t.string   "item"
+    t.string   "name"
+    t.integer  "price"
+    t.float    "calorie"
+    t.float    "net"
+    t.float    "protein"
+    t.float    "fat"
+    t.float    "carbon"
+    t.float    "sugar"
+    t.float    "fiber"
+    t.float    "sodium"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
