@@ -40,6 +40,10 @@ class WelcomeController < ApplicationController
       end
     end
 
+    # TODO: この変数にDBから取得した値をセットしてください
+    # @comparisons = {:user => "ファミマニア", :comparison => "ツヤ", :point1 => "80", :point2 => "30", :point3 => "40"}
+    @comparisons = Comparison.all
+
   end
   
   def get_twitter_cnt(query)

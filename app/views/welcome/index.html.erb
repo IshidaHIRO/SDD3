@@ -144,6 +144,7 @@
         </div>
       </div>
 
+<!--
         <div class="col-xs-12 col-md-4 grid_black shadow_famima">
         <div style="margin-top : 10px">
           <dl class="dl-horizontal"><dt>ガッツリ度</dt><dd>60</dd></dl></div>
@@ -164,6 +165,23 @@
                   <dl class="dl-horizontal"><dt>味の濃さ</dt><dd>80</dd></dl>
                   <dl class="dl-horizontal"><dt>ツヤ</dt><dd>70</dd></dl>
         </div>
+-->
+       <!-- TODO: DBから取得出来るようになったら、ハッシュじゃなくてインスタンスのフィールドを読み込むよう変更する -->        
+       <div class="col-xs-12 col-md-4 grid_black shadow_famima">
+         <% @comparisons.each do |cp| %>
+           <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point1 %></dd></dl>
+         <% end %> 
+       </div>
+       <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
+         <% @comparisons.each do |cp| %>
+           <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point2 %></dd></dl>
+         <% end %> 
+       </div>
+       <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
+         <% @comparisons.each do |cp| %>
+           <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point3 %></dd></dl>
+         <% end %> 
+       </div>
 
 <!-- オリジナル比較表終了 -->
 
