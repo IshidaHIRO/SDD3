@@ -15,6 +15,10 @@ class ComparisonsController < ApplicationController
   # GET /comparisons/new
   def new
     @comparison = Comparison.new
+
+    @p_category = params[:category]
+    @p_item = params[:item]
+
   end
 
   # GET /comparisons/1/edit
