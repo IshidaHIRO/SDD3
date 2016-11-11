@@ -145,19 +145,25 @@
       </div>
 
        <div class="col-xs-12 col-md-4 grid_black shadow_famima">
-         <% @comparisons.each do |cp| %>
-           <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point1 %></dd></dl>
-         <% end %> 
+         <div style="margin-top : 10px">
+           <% @comparisons.each do |cp| %>
+             <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point1 %></dd></dl>
+           <% end %> 
+         </div>
        </div>
        <div class="col-xs-12 col-md-4 grid_black_mid shadow_seven">
-         <% @comparisons.each do |cp| %>
-           <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point2 %></dd></dl>
-         <% end %> 
+         <div style="margin-top : 10px">
+           <% @comparisons.each do |cp| %>
+             <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point2 %></dd></dl>
+           <% end %>
+         </div> 
        </div>
        <div class="col-xs-12 col-md-4 grid_black shadow_lawson">
-         <% @comparisons.each do |cp| %>
-           <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point3 %></dd></dl>
-         <% end %> 
+         <div style="margin-top : 10px">
+           <% @comparisons.each do |cp| %>
+             <dl class="dl-horizontal"><dt><%= cp.comparison %></dt><dd><%= cp.point3 %></dd></dl>
+           <% end %>
+         </div> 
        </div>
 
 <!-- オリジナル比較表終了 -->
