@@ -140,7 +140,7 @@
 
       <div align="right" style="width: 100%;">
         <div style="background:#ffffff; padding:10px; border:1px solid #000000; border-radius:10px; width: 150px;">
-                 <p style="text-align: center;"><a href="#" id="button">比較項目を追加</a></p>
+                 <p style="text-align: center;"><%= link_to '比較項目を追加',  '/comparisons/new' , id:"button", target:"_blank", category:@product["ファミマ"].category, item:@product["ファミマ"].item  %></p>
         </div>
       </div>
 
