@@ -40,8 +40,6 @@ class WelcomeController < ApplicationController
       end
     end
 
-    @comparisons = Comparison.where(item: item)
-
   end
   
   def get_twitter_cnt(query)
