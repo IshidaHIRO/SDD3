@@ -45,15 +45,6 @@
       margin-left:0px;
       font-size: 1.5em
     }
-    .shadow_famima{
-      box-shadow: 0 0 0px 3px #0079c5 inset, 0 0 0px 6px #FFFFFF inset, 0 0 0px 9px #23ac38 inset;
-    }
-    .shadow_lawson{
-      box-shadow: 0 0 0 9px #0074bf inset;
-    }
-    .shadow_seven{
-      box-shadow: 0 0 0 2px #ee7620 inset, 0 0 0 3px #FFFFFF inset, 0 0 0 6px #11582c inset, 0 0 0 7px #FFFFFF inset, 0 0 0 9px #aa1f24 inset;
-    }
     .dd-width{
       width: 100%;
     }
@@ -89,54 +80,25 @@
         </a>
         
         <!-- リスト部分 -->
-        <ul class="dropdown-menu dd-width" role="menu" aria-labelledby="sample-menu-2">
-          <li role="presentation" class="dropdown-header">チキン</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダチキン">サラダチキン</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダチキン（ハーブ）">サラダチキン（ハーブ）</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation" class="dropdown-header">サラダ</li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/サラダ">サラダ</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation" class="dropdown-header">スープ</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/スープ">スープ</a></li> 
-          <li role="presentation" class="divider"></li>
-          <li role="presentation" class="dropdown-header">おにぎり</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（梅）">おにぎり（梅）</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（鮭）">おにぎり（鮭）</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（ツナ）">おにぎり（ツナ）</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（昆布）">おにぎり（昆布）</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり（納豆巻き）">おにぎり（納豆巻き）</a></li>
-          <li role="presentation" class="divider"></li>
-          <li role="presentation" class="dropdown-header">パン</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/パン">パン</a></li>    
-          <li role="presentation" class="divider"></li>
-          <li role="presentation" class="dropdown-header">飲むヨーグルト</li> 
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/飲むヨーグルト（プレーン）">プレーン</a></li>    
+        <ul class="dropdown-menu dd-width" role="menu" aria-labelledby="sample-menu-2"> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/惣菜">惣菜</a></li> 
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/おにぎり">おにぎり</a></li>         
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/スイーツ">スイーツ</a></li>    
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/show/健康食品">健康食品</a></li>    
           <li role="presentation" class="divider"></li>
        </ul>
       </div> 
     </div>
     <div class="col-xs-12 col-md-12">
-      <% if @product["ファミマ"].nil? %>
-        <p class="not_found">選択した商品が見つかりませんでした</p>
+      <% @product.each do |p| %>
+          <%= print_product(p) %>
       <% end %>
-      <% if !@product["ファミマ"].nil? %>
-
-
-          <%= print_product(@product["ファミマ"],@product["セブン"] ,@product["ローソン"] ) %>
-
-
-
-          <%= print_product(@product["セブン"] ,@product["ファミマ"] ,@product["ローソン"] ) %>
-
-
-
-          <%= print_product(@product["ローソン"] ,@product["セブン"] ,@product["ファミマ"] ) %>
-
-      <% end %>
+      
+     
+    
     </div>
   </div>
-  
+
 <div class="request_form" align="right" >
    <%= link_to '商品の追加依頼はこちらへ', 'https://goo.gl/forms/8ChjArd8wYdEAwwF3' ,target:"_blank" %>
 </div>
