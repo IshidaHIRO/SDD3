@@ -6,14 +6,8 @@ one:
   item: MyString
   name: MyString
   price: 1
-  calorie: 1.5
-  net: 1.5
-  protein: 1.5
-  fat: 1.5
-  carbon: 1.5
-  sugar: 1.5
-  fiber: 1.5
-  sodium: 1.5
+  good: 1
+  bad: 1
 
 two:
   shop: MyString
@@ -21,11 +15,5 @@ two:
   item: MyString
   name: MyString
   price: 1
-  calorie: 1.5
-  net: 1.5
-  protein: 1.5
-  fat: 1.5
-  carbon: 1.5
-  sugar: 1.5
-  fiber: 1.5
-  sodium: 1.5
+  good: 1
+  bad: 1
