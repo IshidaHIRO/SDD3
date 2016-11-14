@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
     if(@item.nil? || @item == "") 
       @item = "惣菜"
     end
-    @product = (self.get_product_hash)[@item]
 
+    @product = (self.get_product_hash)[@item]
   end
   
   def get_product_hash

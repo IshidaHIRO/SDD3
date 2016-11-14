@@ -6,14 +6,8 @@ class CreateItems < ActiveRecord::Migration
       t.string :item
       t.string :name
       t.integer :price
-      t.float :calorie
-      t.float :net
-      t.float :protein
-      t.float :fat
-      t.float :carbon
-      t.float :sugar
-      t.float :fiber
-      t.float :sodium
+      t.integer :good
+      t.integer :bad
 
       t.timestamps null: false
     end

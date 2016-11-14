@@ -1,2 +1,0 @@
-json.extract! comparison, :id, :category, :item, :user, :comparison, :point_type, :point1, :comment1, :point2, :comment2, :point3, :comment3, :good, :created_at, :updated_at
-json.url comparison_url(comparison, format: :json)
