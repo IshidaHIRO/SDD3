@@ -1,12 +1,13 @@
 class WelcomeController < ApplicationController
 
   def index
-    @item = params[:item]
-    if(@item.nil? || @item == "") 
-      @item = "惣菜"
+    item = params[:item]
+    if(item.nil? || item == "") 
+      item = "惣菜"
     end
 
-    @product = (self.get_product_hash)[@item]
+    # @product = (self.get_product_hash)[@item]
+    @items = Item.where(item: item)
   end
   
   def get_product_hash
