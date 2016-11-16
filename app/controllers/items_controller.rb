@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
              @item = Item.new
              @item.shop=shop
              @item.name=name
+             @item.category=product.category
              @item.save
            end
          }
