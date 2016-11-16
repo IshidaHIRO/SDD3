@@ -12,6 +12,35 @@ class ItemsController < ApplicationController
   def show
   end
 
+  # 商品名、コンビニ名による表示
+  # FIXME 商品一覧画面がDBに対応するまでのメソッド
+  def view
+    shop = params[:shop]
+    name = params[:name]
+    @item = Item.where(shop:shop).where(name:name) 
+    if !@item.blank?
+      @item = @item.first
+      puts @item
+    else
+      # DBで見つからない場合、静的情報にないか確認する
+      # FIXME 商品一覧移行完了までの暫定ロジック)
+      item_hash = self.get_product_hash 
+      item_hash.each_value {|item_list|
+         item_list.each{|product| 
+           if !@item.blank? 
+             break
+           end 
+           if product.name==name
+             @item = Item.new
+             @item.shop=shop
+             @item.name=name
+             @item.save
+           end
+         }
+      }
+    end
+  end
+
   # GET /items/new
   def new
     @item = Item.new
