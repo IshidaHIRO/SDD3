@@ -75,10 +75,10 @@
       </div> 
     </div>
     <div class="col-xs-12 col-md-12">
-      <% @items.each do |p| %>
-          <%= p.item %>
+      <% @product.each do |p| %>
+          <%= print_product(p) %>
       <% end %>
-      <% if @items.blank? %>
+      <% if @product.blank? %>
         <p class="not_found">選択した商品が見つかりませんでした</p>
       <% end %>
     </div>
