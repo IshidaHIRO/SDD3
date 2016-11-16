@@ -32,9 +32,11 @@ class ItemsController < ApplicationController
            end 
            if product.name==name
              @item = Item.new
-             @item.shop=shop
-             @item.name=name
+             @item.shop=product.shop
+             @item.name=product.name
              @item.category=product.category
+             @item.price=product.price
+             @item.item=product.item
              @item.save
            end
          }
