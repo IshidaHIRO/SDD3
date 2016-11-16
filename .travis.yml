@@ -14,3 +14,8 @@ deploy:
   app: secure-retreat-68116
   on:
     repo: IshidaHIRO/SDD3
+  run:
+    - "rake db:migrate"
+    - restart
+    - "rake cleanup"
+
