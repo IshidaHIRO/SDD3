@@ -10,11 +10,11 @@ class ItemsControllerTest < ActionController::TestCase
     assert_response :success 
     assert_select ".not_found",1 
   end
-
-  test "ファミマの国産鶏のサラダチキン" do
-    get :view,{"name"=>"国産鶏のサラダキチン","shop"=>"ファミマ"}
+  
+  test "ファミマ 国産鶏のサラダチキン" do
+    get :view, name:"国産鶏のサラダチキン",shop:"ファミマ"
     assert_response :success
-    assert_select "p.p_name","ファミマ  国産鶏のサラダチキン"
+    assert_select "p.p_name"
   end
 
   test "should get index" do
