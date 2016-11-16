@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
            if !@item.blank? 
              break
            end 
-           if product.name==name
+           if product.name==name && product.shop==shop
              @item = Item.new
              @item.shop=product.shop
              @item.name=product.name
