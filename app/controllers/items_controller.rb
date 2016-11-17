@@ -56,9 +56,9 @@ class ItemsController < ApplicationController
     end
     respond_to do |format|
       if @item.update(good:@item.good,bad:@item.bad)
-        format.html { render :view , notice: '貴方の評価を投稿しました!' }
+        format.html { redirect_to @item , notice: '貴方の評価を投稿しました!' }
       else
-        format.html { render :view , error: '投稿に失敗しました' } 
+        format.html { redirect_to @item , error: '投稿に失敗しました' } 
       end
     end
   end
