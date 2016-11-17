@@ -23,3 +23,53 @@
   display: flex;
   flex-wrap: wrap;
 }
+body{
+      -webkit-text-size-adjust: 100%;
+    }
+   .title1{
+      text-align: center;
+      font-family: fantasy;
+      font-size: 2.5em;
+    }
+    .title1 a:hover, a:focus {
+    text-decoration: none;
+    }
+    .title2{
+      text-align: center;
+      font-size: 1.5em;
+      margin:20px;
+    }     
+    .product{ 
+       margin: 0 auto;
+       padding:15px;
+       border-color: black;
+       border-style: solid;
+       border-width: 1px;
+    }
+    .p_name{
+      font-size: 2em;
+      color: #800000;      
+    }
+    .dd-width{
+      width: 100%;
+    }
+    div.product div.spec{
+      height:142px;
+    }
+    div.product div.spec dl{
+      margin-left:200px;
+      margin-top:10px;
+    } 
+/* スマホのスタイル*/
+/* タブレットのスタイル*/
+@media all and (min-width: 480px){
+  .title1{
+    font-size: 4em;
+  }
+  .title2{
+    font-size: 2em;
+  }
+}
+/* PCのスタイル*/
+@media all and (min-width: 768px){
+}

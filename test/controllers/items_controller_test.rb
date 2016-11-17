@@ -5,6 +5,18 @@ class ItemsControllerTest < ActionController::TestCase
     @item = items(:one)
   end
 
+  test "商品がない場合" do
+    get :view,{"name"=>"適当な商品","shop"=>"ファミマ"}
+    assert_response :success 
+    assert_select ".not_found",1 
+  end
+  
+  test "ファミマ 国産鶏のサラダチキン" do
+    get :view, name:"国産鶏のサラダチキン",shop:"ファミマ"
+    assert_response :success
+    assert_select "p.p_name"
+  end
+
   test "should get index" do
     get :index
     assert_response :success
