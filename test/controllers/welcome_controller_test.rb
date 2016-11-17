@@ -8,10 +8,10 @@ class WelcomeControllerTest < ActionController::TestCase
       item.destroy
     }
     item_list =[]
-    item_list.push @product.new(1,"ファミマ","惣菜","国産鶏のサラダチキン",239)
-    item_list.push @product.new(14,"セブン","おにぎり","紀州南高梅",110)
-    item_list.push @product.new(29,"ローソン","スイーツ","チョコチップスティックパン",100)
-    item_list.push @product.new(30,"ファミマ","ドリンク","プレーンヨーグルトドリンク",nil)
+    item_list.push Product_dto.new(1,"ファミマ","惣菜","国産鶏のサラダチキン",239)
+    item_list.push Product_dto.new(14,"セブン","おにぎり","紀州南高梅",110)
+    item_list.push Product_dto.new(29,"ローソン","スイーツ","チョコチップスティックパン",100)
+    item_list.push Product_dto.new(30,"ファミマ","ドリンク","プレーンヨーグルトドリンク",nil)
    
     item_list.each{|product| 
       item = Item.new
