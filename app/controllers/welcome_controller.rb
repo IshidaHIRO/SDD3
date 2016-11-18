@@ -6,7 +6,8 @@ class WelcomeController < ApplicationController
       @item = "惣菜"
     end
 
-    @product = (self.get_product_hash)[@item]
+    @product = Item.where(category: @item)
+
   end
 end
 
