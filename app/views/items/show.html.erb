@@ -1,12 +1,39 @@
 <p id="notice"><%= notice %></p>
-<% if !@item.blank? %>
-  <%= print_item(@item) %>
-  <%= link_to '商品一覧に戻る', '/show/'+@item.category %>
-<% end %>
-<% if @item.blank? %>
-  <p class="not_found">選択した商品が見つかりませんでした</p>
-<%= link_to 'トップに戻る', '/' %>
-<% end %>
 
+<p>
+  <strong>Shop:</strong>
+  <%= @item.shop %>
+</p>
 
+<p>
+  <strong>Category:</strong>
+  <%= @item.category %>
+</p>
 
+<p>
+  <strong>Item:</strong>
+  <%= @item.item %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Good:</strong>
+  <%= @item.good %>
+</p>
+
+<p>
+  <strong>Bad:</strong>
+  <%= @item.bad %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
