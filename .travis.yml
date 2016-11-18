@@ -15,7 +15,7 @@ deploy:
   on:
     repo: IshidaHIRO/SDD3
   run:
-    - "rake db:migrate:reset"
+    - "rake db:migrate"
     - restart
     - "rake cleanup"
 
