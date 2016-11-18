@@ -37,10 +37,29 @@ class ItemsController < ApplicationController
              @item.category=product.category
              @item.price=product.price
              @item.item=product.item
+             @item.good=0
+             @item.bad=0
              @item.save
            end
          }
       }
+    end
+  end
+
+  def vote
+    id = params[:item][:id]
+    @item = Item.find(id)
+    if params[:good] 
+      @item.good = @item.good+1
+    else
+      @item.bad = @item.bad+1
+    end
+    respond_to do |format|
+      if @item.update(good:@item.good,bad:@item.bad)
+        format.html { redirect_to @item , notice: '貴方の評価を投稿しました!' }
+      else
+        format.html { redirect_to @item , error: '投稿に失敗しました' } 
+      end
     end
   end
 
