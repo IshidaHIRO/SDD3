@@ -30,7 +30,7 @@ class ItemsControllerTest < ActionController::TestCase
 
   test "should create item" do
     assert_difference('Item.count') do
-      post :create, item: { bad: @item.bad, category: @item.category, good: @item.good, item: @item.item, name: @item.name, price: @item.price, shop: @item.shop }
+      post :create, item: { bad: @item.bad, category: @item.category, good: @item.good, image: @item.image, item: @item.item, name: @item.name, price: @item.price, shop: @item.shop }
     end
 
     assert_redirected_to item_path(assigns(:item))
@@ -47,7 +47,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   test "should update item" do
-    patch :update, id: @item, item: { bad: @item.bad, category: @item.category, good: @item.good, item: @item.item, name: @item.name, price: @item.price, shop: @item.shop }
+    patch :update, id: @item, item: { bad: @item.bad, category: @item.category, good: @item.good, image: @item.image, item: @item.item, name: @item.name, price: @item.price, shop: @item.shop }
     assert_redirected_to item_path(assigns(:item))
   end
 
