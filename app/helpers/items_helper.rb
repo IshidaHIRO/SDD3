@@ -4,8 +4,11 @@ module ItemsHelper
        content_tag(:div, :class => "product clearfix", :id => "item_"+item.id.to_s,) do
          concat content_tag(:p,item.shop + "  " + item.name,:class => "p_name")
          concat (content_tag(:div, :class => "spec") do
-##           concat image_tag("/images/default01.jpg", :width => "200",:style => "float :left")
-           concat image_tag('/images/'+item.image, :width => "150",:style => "float :left")
+	   if item.image.nil?
+             concat image_tag("/images/default01.jpg", :width => "200",:style => "float :left")
+           else 
+             concat content_tag(:a,image_tag('/images/'+item.image, :width => '150',:style => "float :left"),:href => link)
+           end  
            concat (content_tag(:dl) do
              concat content_tag(:dt,"税込価格", :style => "float :left")
              concat content_tag(:dd,item.price.to_s + "円", :style => "margin-left :80px")
