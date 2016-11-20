@@ -19,26 +19,6 @@ class WelcomeControllerTest < ActionController::TestCase
     items.each {|item| 
       item.destroy
     }
-<<<<<<< HEAD
-    item_list =[]
-    item_list.push Product_dto.new(1,"ファミマ","惣菜","国産鶏のサラダチキン",239)
-    item_list.push Product_dto.new(14,"セブン","おにぎり","紀州南高梅",110)
-    item_list.push Product_dto.new(29,"ローソン","スイーツ","チョコチップスティックパン",100)
-    item_list.push Product_dto.new(30,"ファミマ","ドリンク","プレーンヨーグルトドリンク",nil)
-   
-    item_list.each{|product| 
-      item = Item.new
-      item.shop=product.shop
-      item.name=product.name
-      item.category=product.category
-      item.price=product.price
-      item.item=product.item
-      item.good=0
-      item.bad=0
-      item.save 
-    }
-=======
->>>>>>> master
   end  
 
   
