@@ -20,6 +20,8 @@ class WelcomeControllerTest < ActionController::TestCase
       item.category=product.category
       item.price=product.price
       item.item=product.item
+      item.good=0
+      item.bad=0
       item.save 
     }
   end  
