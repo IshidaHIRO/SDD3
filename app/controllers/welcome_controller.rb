@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
       @item = "惣菜"
     end
 
-    @product = Item.where(category: @item)
+    @product = Item.where(category: @item).order('(good + bad) DESC')
 
   end
 end
