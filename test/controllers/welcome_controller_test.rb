@@ -89,8 +89,19 @@ class WelcomeControllerTest < ActionController::TestCase
     item3 = add_item('ローソン','惣菜','惣菜','惣菜3',110,10,0)  
     get :index,{"item"=>"惣菜"}
     assert_response :success 
-    assert_select "#rank1 .p_name","惣菜2"
-    assert_select "#rank2 .p_name","惣菜3"
-    assert_select "#rank3 .p_name","惣菜1"
+    assert_select ".rank1 .p_name","惣菜2"
+    assert_select ".rank2 .p_name","惣菜3"
+    assert_select ".rank3 .p_name","惣菜1"
+  end
+  
+  test "商品表示順の確認(同率時)" do
+    item1 = add_item('ファミマ','惣菜','惣菜','惣菜1',239,5,4)
+    item2 = add_item('セブン','惣菜','惣菜','惣菜2',198,0,20)
+    item3 = add_item('ローソン','惣菜','惣菜','惣菜3',110,20,0)  
+    get :index,{"item"=>"惣菜"}
+    assert_response :success 
+    assert_select ".rank1 .p_name",2
+    assert_select ".rank2 .p_name",0
+    assert_select ".rank3 .p_name",1
   end
 end

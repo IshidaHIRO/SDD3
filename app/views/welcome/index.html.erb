@@ -1,5 +1,17 @@
+<% 
+  rank_adustor=0
+  before_reputation=0 
+%>
 <% @product.each_with_index do |p,index| %>
-  <%= print_product(p,(index+1).to_s) %>
+  <% 
+    if before_reputation == (p.good + p.bad)
+      rank_adustor = rank_adustor+1
+    else 
+      rank_adustor = 0
+    end
+  %>
+  <%= print_product(p,(index+1-rank_adustor).to_s) %>
+  <% before_reputation = p.good+p.bad %>
 <% end %>
 <% if @product.blank? %>
   <p class="not_found">選択した商品が見つかりませんでした</p>

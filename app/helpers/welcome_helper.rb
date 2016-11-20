@@ -2,7 +2,7 @@ module WelcomeHelper
   def print_product(target,index)
      link = '/items/view/'+target.name+'?shop='+target.shop
      content_tag(:div, :class => 'product', :id => target.id.to_s) do
-       concat (content_tag(:span,:id => 'rank'+index) do
+       concat (content_tag(:span,:class => 'rank'+index) do
          concat content_tag(:span,index+"位",:class => 'rank')
          concat content_tag(:span,target.shop,:class => 'shop')
          concat content_tag(:a, target.name,:class => 'p_name', :href => link) 
