@@ -2,10 +2,11 @@ require 'test_helper'
 
 class WelcomeControllerTest < ActionController::TestCase
 
-  def add_item(shop,category,item,name,price,good,bad)
+  def add_item(shop,category,name,price,good,bad)
     item = Item.new
     item.shop=shop
     item.category=category
+    item.item=category
     item.name=name
     item.price=price
     item.good=good
@@ -23,9 +24,9 @@ class WelcomeControllerTest < ActionController::TestCase
   
   test "Indexの表示" do
     # 惣菜のみが表示される
-    self.add_item('ファミマ','惣菜','惣菜','国産鶏のサラダチキン',239,0,0)
-    self.add_item('セブン','惣菜','惣菜','サラダチキン',198,0,0)
-    self.add_item('ローソン','おにぎり','おにぎり','シーチキンマヨネーズ',110,0,0)
+    self.add_item('ファミマ','惣菜','国産鶏のサラダチキン',239,0,0)
+    self.add_item('セブン','惣菜','サラダチキン',198,0,0)
+    self.add_item('ローソン','おにぎり','シーチキンマヨネーズ',110,0,0)
     get :index
     assert_response :success
     assert_select "a.p_name",2
@@ -33,9 +34,9 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "惣菜の表示" do 
     # 惣菜のみが表示される
-    add_item('ファミマ','惣菜','惣菜','国産鶏のサラダチキン',239,0,0)
-    add_item('セブン','惣菜','惣菜','サラダチキン',198,0,0)
-    add_item('ローソン','おにぎり','おにぎり','シーチキンマヨネーズ',110,0,0)
+    add_item('ファミマ','惣菜','国産鶏のサラダチキン',239,0,0)
+    add_item('セブン','惣菜','サラダチキン',198,0,0)
+    add_item('ローソン','おにぎり','シーチキンマヨネーズ',110,0,0)
     get :index,{"item"=>"惣菜"}
     assert_response :success 
     assert_select "a.p_name",2
@@ -43,9 +44,9 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "おにぎりの表示" do
     # おにぎりのみが表示される
-    add_item('ファミマ','惣菜','惣菜','国産鶏のサラダチキン',239,0,0)
-    add_item('セブン','おにぎり','おにぎり','紀州南高梅',198,0,0)
-    add_item('ローソン','おにぎり','おにぎり','シーチキンマヨネーズ',110,0,0)
+    add_item('ファミマ','惣菜','国産鶏のサラダチキン',239,0,0)
+    add_item('セブン','おにぎり','紀州南高梅',198,0,0)
+    add_item('ローソン','おにぎり','シーチキンマヨネーズ',110,0,0)
     get :index,{"item"=>"おにぎり"}
     assert_response :success 
     assert_select "a.p_name",2 
@@ -53,9 +54,9 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "スイーツの表示" do
     #スイーツのみ表示される
-    add_item('ファミマ','スイーツ','スイーツ','プリン',239,0,0)
-    add_item('セブン','ドリンク','ドリンク','ドリンク2',198,0,0)
-    add_item('ローソン','スイーツ','スイーツ','チョコチップスナック',110,0,0)
+    add_item('ファミマ','スイーツ','プリン',239,0,0)
+    add_item('セブン','ドリンク','ドリンク2',198,0,0)
+    add_item('ローソン','スイーツ','チョコチップスナック',110,0,0)
     get :index,{"item"=>"スイーツ"}
     assert_response :success 
     assert_select "a.p_name",2 
@@ -63,9 +64,9 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "飲むヨーグルト（プレーン）の表示" do 
     #ドリンクのみ表示される
-    add_item('ファミマ','ドリンク','ドリンク','ドリンク1',239,0,0)
-    add_item('セブン','ドリンク','ドリンク','ドリンク2',198,0,0)
-    add_item('ローソン','おにぎり','おにぎり','シーチキンマヨネーズ',110,0,0)
+    add_item('ファミマ','ドリンク','ドリンク1',239,0,0)
+    add_item('セブン','ドリンク','ドリンク2',198,0,0)
+    add_item('ローソン','おにぎり','シーチキンマヨネーズ',110,0,0)
     get :index,{"item"=>"ドリンク"}
     assert_response :success 
     assert_select "a.p_name",2 
@@ -73,9 +74,9 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test "NotFoundの表示" do 
     #なにも表示されない
-    add_item('ファミマ','惣菜','惣菜','国産鶏のサラダチキン',239,0,0)
-    add_item('セブン','惣菜','惣菜','サラダチキン',198,0,0)
-    add_item('ローソン','おにぎり','おにぎり','シーチキンマヨネーズ',110,0,0)
+    add_item('ファミマ','惣菜','国産鶏のサラダチキン',239,0,0)
+    add_item('セブン','惣菜','サラダチキン',198,0,0)
+    add_item('ローソン','おにぎり','シーチキンマヨネーズ',110,0,0)
     get :index,{"item"=>"適当な商品"}
     assert_response :success 
     assert_select ".not_found",1 
@@ -84,9 +85,9 @@ class WelcomeControllerTest < ActionController::TestCase
   test "商品表示順の確認" do
     #惣菜のみが表示される
     #惣菜2、惣菜3、惣菜1の順に表示される
-    item1 = add_item('ファミマ','惣菜','惣菜','惣菜1',239,5,4)
-    item2 = add_item('セブン','惣菜','惣菜','惣菜2',198,0,20)
-    item3 = add_item('ローソン','惣菜','惣菜','惣菜3',110,10,0)  
+    add_item('ファミマ','惣菜','惣菜1',239,5,4)
+    add_item('セブン','惣菜','惣菜2',198,0,20)
+    add_item('ローソン','惣菜','惣菜3',110,10,0)  
     get :index,{"item"=>"惣菜"}
     assert_response :success 
     assert_select ".rank1 .p_name","惣菜2"
@@ -95,9 +96,9 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test "商品表示順の確認(同点時)" do
-    item1 = add_item('ファミマ','惣菜','惣菜','惣菜1',239,5,4)
-    item2 = add_item('セブン','惣菜','惣菜','惣菜2',198,0,20)
-    item3 = add_item('ローソン','惣菜','惣菜','惣菜3',110,20,0)  
+    add_item('ファミマ','惣菜','惣菜1',239,5,4)
+    add_item('セブン','惣菜','惣菜2',198,0,20)
+    add_item('ローソン','惣菜','惣菜3',110,20,0)  
     get :index,{"item"=>"惣菜"}
     assert_response :success 
     assert_select ".rank1 .p_name",2
@@ -106,9 +107,9 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test "商品表示順の確認(全て同点時)" do
-    item1 = add_item('ファミマ','惣菜','惣菜','惣菜1',239,0,0)
-    item2 = add_item('セブン','惣菜','惣菜','惣菜2',198,0,0)
-    item3 = add_item('ローソン','惣菜','惣菜','惣菜3',110,0,0)  
+    add_item('ファミマ','惣菜','惣菜1',239,0,0)
+    add_item('セブン','惣菜','惣菜2',198,0,0)
+    add_item('ローソン','惣菜','惣菜3',110,0,0)  
     get :index,{"item"=>"惣菜"}
     assert_response :success 
     assert_select ".rank1 .p_name",3
