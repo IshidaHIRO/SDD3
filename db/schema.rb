@@ -16,6 +16,30 @@ ActiveRecord::Schema.define(version: 20161119074947) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "com_cd"
+    t.string   "comp_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comparisons", force: :cascade do |t|
+    t.string   "category"
+    t.string   "item"
+    t.string   "user"
+    t.string   "comparison"
+    t.integer  "point_type"
+    t.integer  "point1"
+    t.text     "comment1"
+    t.integer  "point2"
+    t.text     "comment2"
+    t.integer  "point3"
+    t.text     "comment3"
+    t.integer  "good"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.string   "shop"
     t.string   "category"
@@ -27,6 +51,19 @@ ActiveRecord::Schema.define(version: 20161119074947) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "image"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "comp_cd"
+    t.string   "jan"
+    t.string   "prd_cd"
+    t.string   "prd_name"
+    t.integer  "price"
+    t.string   "cat_cd"
+    t.string   "prd_img"
+    t.datetime "sales_release"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
