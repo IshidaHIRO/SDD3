@@ -12,6 +12,16 @@ module WelcomeHelper
          concat (content_tag(:dl) do
 	    concat content_tag(:dt,"税込価格")
 	    concat content_tag(:dd,target.price.to_s + "円")
+
+             concat content_tag(:dt,"☆good")
+             concat content_tag(:dd,item.good)
+             concat content_tag(:dt,"★bad")
+             concat content_tag(:dd,item.bad)
+           end)
+           concat hidden_field(:item,:id,value:item.id)
+           concat submit_tag("GOOD",:name =>"good")
+           concat submit_tag("BAD",:name =>"bad")
+
 	 end)
          concat link_to('商品の詳細を見る',link)
        end)
