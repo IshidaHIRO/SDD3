@@ -4,7 +4,8 @@ module WelcomeHelper
      content_tag(:div, :class => 'product', :id => target.id.to_s) do
        concat (content_tag(:span,:id => 'rank'+index) do
          concat content_tag(:span,index+"位",:class => 'rank')
-         concat content_tag(:a, target.shop+"  "+target.name,:class => 'p_name', :href => link) 
+         concat content_tag(:span,target.shop,:class => 'shop')
+         concat content_tag(:a, target.name,:class => 'p_name', :href => link) 
        end)
        concat (content_tag(:div, :class => 'spec', :id => 'collapseOne'+target.shop) do 
 	 concat content_tag(:a,image_tag('/images/default01.jpg', :width => '200',:style => 'float :left'),:href => link)
