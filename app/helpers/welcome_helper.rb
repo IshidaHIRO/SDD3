@@ -4,7 +4,7 @@ module WelcomeHelper
      content_tag(:div, :class => 'product clearfix', :id => 'accordion'+target.id.to_s) do
        concat content_tag(:a, target.shop+"  "+target.name,:class => 'p_name', :href => link) 
        concat (content_tag(:div, :class => 'spec', :id => 'collapseOne'+target.shop) do 
-	 if target.image.nil?
+	 if target.image.blank?
            concat image_tag("/images/default01.jpg", :width => "200",:style => "float :left")
          else 
            concat content_tag(:a,image_tag('/images/'+target.image, :width => '150',:style => "float :left"),:href => link)

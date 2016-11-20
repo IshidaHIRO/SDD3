@@ -4,7 +4,7 @@ module ItemsHelper
        content_tag(:div, :class => "product clearfix", :id => "item_"+item.id.to_s,) do
          concat content_tag(:p,item.shop + "  " + item.name,:class => "p_name")
          concat (content_tag(:div, :class => "spec") do
-	   if item.image.nil?
+	   if item.image.blank?
              concat image_tag("/images/default01.jpg", :width => "200",:style => "float :left")
            else 
              concat content_tag(:a,image_tag('/images/'+item.image, :width => '150',:style => "float :left"),:href => link)
