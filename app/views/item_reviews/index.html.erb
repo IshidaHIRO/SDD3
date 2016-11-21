@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Item Reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Handlename</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_reviews.each do |item_review| %>
+      <tr>
+        <td><%= item_review.item_id %></td>
+        <td><%= item_review.handlename %></td>
+        <td><%= item_review.comment %></td>
+        <td><%= link_to 'Show', item_review %></td>
+        <td><%= link_to 'Edit', edit_item_review_path(item_review) %></td>
+        <td><%= link_to 'Destroy', item_review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item review', new_item_review_path %>
