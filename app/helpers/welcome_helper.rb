@@ -1,6 +1,19 @@
 module WelcomeHelper
   def print_product(target,index)
      link = '/items/'+target.id.to_s
+     len_cmt = 60
+     target_review = ItemReview.where(item_id: target.id).order('created_at DESC').first
+     if target_review.nil?
+       target_handlename = ""
+       target_comment = "コメントはまだありません"
+     else
+       target_handlename = target_review.handlename+" さん"
+       if target_review.comment.length > len_cmt
+         target_comment = target_review.comment[0, len_cmt]+"…"
+       else
+         target_comment = target_review.comment
+       end
+     end
      content_tag(:div, :class => 'product clearfix', :id => target.id.to_s) do
        concat (content_tag(:span,:class => 'rank'+index) do
          concat content_tag(:span,index+"位",:class => 'rank')
@@ -20,6 +33,9 @@ module WelcomeHelper
             concat content_tag(:dd,target.good + target.bad, :style => "margin-left :80px")
             concat content_tag(:dt,"good/bad", :style => "float :left")
             concat content_tag(:dd,target.good.to_s+"/"+target.bad.to_s, :style => "margin-left :80px")
+            concat content_tag(:dt,"コメント", :style => "float :left")
+            concat content_tag(:dd,target_comment, :style => "margin-left :80px")
+            concat content_tag(:dd,target_handlename, :style => "margin-left :80px")
 	 end)
          concat link_to('商品の詳細を見る',link, :style => "margin-left :10px")
        end)
