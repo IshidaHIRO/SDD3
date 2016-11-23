@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # 商品詳細の処理
    resources :items
    post 'items/vote' => 'items#vote'
+   post 'items/review' => 'items#review'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

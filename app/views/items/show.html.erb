@@ -1,6 +1,20 @@
 <p id="notice"><%= notice %></p>
 <% if !@item.blank? %>
+  <!-- 商品情報 -->
   <%= print_item(@item) %>
+  <!-- 口コミ投稿フォーム -->
+  <h3>コメント投稿欄</h3>
+  <%= 
+    form_tag("/items/review", method: "post") do
+      concat hidden_field(:item,:id,value:@item.id)
+      concat "ハンドルネーム"
+      concat text_field(:review,:handlename)
+      concat "コメント"
+      concat text_field(:review,:comment)
+      concat submit_tag("コメントを投稿する")
+    end 
+  %>
+
   <%= link_to '商品一覧に戻る', '/show/'+@item.category %>
 <% end %>
 <% if @item.blank? %>
