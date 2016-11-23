@@ -5,6 +5,15 @@ class ItemReviewsControllerTest < ActionController::TestCase
     @item_review = item_reviews(:one)
   end
 
+  test "口コミ投稿" do
+    item = Item.new
+    item.save
+    assert_difference('ItemReview.count') do
+      post :add, item_review: { comment: "テストコメント", handlename: "ハンドルネーム", item_id: item.id }
+    end
+    assert_redirected_to item
+  end
+  
   test "should get index" do
     get :index
     assert_response :success

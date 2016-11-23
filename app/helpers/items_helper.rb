@@ -20,8 +20,8 @@ module ItemsHelper
            end)
              concat (content_tag(:div, :style => "margin-left :160px") do 
                concat hidden_field(:item,:id,value:item.id, :style => "margin-left :10px")
-               concat submit_tag("GOOD",:name =>"good")
-               concat submit_tag("BAD",:name =>"bad")
+               concat submit_tag("GOOD",:name =>"item[good]")
+               concat submit_tag("BAD",:name =>"item[bad]")
              end)
          end)
        end

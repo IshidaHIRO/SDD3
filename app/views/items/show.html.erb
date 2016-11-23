@@ -5,19 +5,19 @@
   <!-- 口コミ投稿フォーム -->
   <h3>コメント投稿欄</h3>
   <%= 
-    form_tag("/items/review", method: "post") do
-      concat hidden_field(:item,:id,value:@item.id)
+    form_tag("/item_reviews/add", method: "post") do
+      concat hidden_field(:item_review,:item_id,value:@item.id)
       concat "ハンドルネーム"
-      concat text_field(:review,:handlename)
+      concat text_field(:item_review,:handlename)
       concat "コメント"
-      concat text_field(:review,:comment)
+      concat text_field(:item_review,:comment)
       concat submit_tag("コメントを投稿する")
     end 
   %>
   <h3>コメント一覧</h3>
   <% @item_reviews.each do | review| %>
      <%= 
-       content_tag(:dl) do
+       content_tag(:dl,:class=>"item_review") do
          concat content_tag(:dt,review.handlename) 
          concat content_tag(:dd,review.comment)
        end

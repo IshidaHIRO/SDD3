@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :item_reviews
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -10,7 +9,10 @@ Rails.application.routes.draw do
   # 商品詳細の処理
    resources :items
    post 'items/vote' => 'items#vote'
-   post 'items/review' => 'items#review'
+   
+  # 商品へのコメントの処理
+   resources :item_reviews
+   post 'item_reviews/add' => 'item_reviews#add'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

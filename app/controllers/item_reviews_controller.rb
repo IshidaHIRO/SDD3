@@ -1,6 +1,25 @@
 class ItemReviewsController < ApplicationController
   before_action :set_item_review, only: [:show, :edit, :update, :destroy]
 
+  # POST /item_reviews/review
+  def add
+    item_id = params[:item_review][:item_id]
+    handlename = params[:item_review][:handlename]
+    comment = params[:item_review][:comment]
+    item_review = ItemReview.new
+    item_review.item_id=item_id
+    item_review.handlename=handlename
+    item_review.comment=comment
+    item=Item.find(item_id)
+    respond_to do |format|
+      if item_review.save
+        format.html { redirect_to item , notice: '貴方のコメントを投稿しました。' }
+      else
+        format.html { redirect_to item , error: 'コメントの投稿に失敗しました' } 
+      end
+    end
+  end
+
   # GET /item_reviews
   # GET /item_reviews.json
   def index

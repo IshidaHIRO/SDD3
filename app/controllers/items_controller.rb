@@ -14,10 +14,11 @@ class ItemsController < ApplicationController
     @item_reviews=ItemReview.where(item_id:@item.id)
   end
 
+  # POST /items/vote
   def vote
     id = params[:item][:id]
     @item = Item.find(id)
-    if params[:good] 
+    if params[:item][:good] 
       @item.good = @item.good+1
     else
       @item.bad = @item.bad+1
@@ -31,23 +32,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def review
-    item_id = params[:item][:id]
-    handlename = params[:review][:handlename]
-    comment = params[:review][:comment]
-    item_review = ItemReview.new
-    item_review.item_id=item_id
-    item_review.handlename=handlename
-    item_review.comment=comment
-    item=Item.find(item_id)
-    respond_to do |format|
-      if item_review.save
-        format.html { redirect_to item , notice: '貴方のコメントを投稿しました。' }
-      else
-        format.html { redirect_to item , error: 'コメントの投稿に失敗しました' } 
-      end
-    end
-  end
   
   # GET /items/new
   def new
