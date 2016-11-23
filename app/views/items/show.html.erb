@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
 <% if !@item.blank? %>
   <!-- 商品情報 -->
   <%= print_item(@item) %>
   <!-- 口コミ投稿フォーム -->
-  <h3>コメント投稿欄</h3>
-  <%= 
-    form_tag("/item_reviews/add", method: "post") do
-      concat hidden_field(:item_review,:item_id,value:@item.id)
-      concat "ハンドルネーム"
-      concat text_field(:item_review,:handlename)
-      concat "コメント"
-      concat text_field(:item_review,:comment)
-      concat submit_tag("コメントを投稿する")
-    end 
-  %>
-  <h3>コメント一覧</h3>
-  <% @item_reviews.each do | review| %>
-     <%= 
-       content_tag(:dl,:class=>"item_review") do
-         concat content_tag(:dt,review.handlename) 
-         concat content_tag(:dd,review.comment)
-       end
-     %>
+  <div class="comment">
+  <h4>コメント投稿欄</h4>
+  <%= form_tag("/item_reviews/add", method: "post") do %>
+      <%= hidden_field(:item_review,:item_id,value:@item.id) %>
+      <dl>
+        <dt>ハンドルネーム:</dt>
+        <dd><%= text_field(:item_review,:handlename) %></dd> 
+        <dt>コメント:</dt>
+        <dd><%= text_area(:item_review,:comment) %></dd>
+      </dl>
+      <%= submit_tag("コメントを投稿する",:class => "btn btn-lg btn-primary") %>
   <% end %>
-
+  </div>
+  <div class="comment">
+  <h4>コメント一覧</h4>
+  <% if @item_reviews.blank? %>
+    <p>この商品に対するコメントはありません。</p>
+  <% else %>
+    <table class="table">
+    <tr><th>ハンドルネーム</th><th>コメント</th></tr>
+    <% @item_reviews.each do | review| %>
+      <tr class="item_review">
+      <td><%= review.handlename %></td> 
+      <td><%= review.comment %></td> 
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
+  </div>
   <%= link_to '商品一覧に戻る', '/show/'+@item.category %>
 <% end %>
 <% if @item.blank? %>

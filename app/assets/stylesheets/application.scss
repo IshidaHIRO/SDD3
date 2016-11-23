@@ -72,4 +72,7 @@ body{
 }
 /* PCのスタイル*/
 @media all and (min-width: 768px){
+  body div.container{
+   width:750px;
+  }
 }
