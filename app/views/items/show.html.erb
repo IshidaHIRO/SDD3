@@ -14,6 +14,15 @@
       concat submit_tag("コメントを投稿する")
     end 
   %>
+  <h3>コメント一覧</h3>
+  <% @item_reviews.each do | review| %>
+     <%= 
+       content_tag(:dl) do
+         concat content_tag(:dt,review.handlename) 
+         concat content_tag(:dd,review.comment)
+       end
+     %>
+  <% end %>
 
   <%= link_to '商品一覧に戻る', '/show/'+@item.category %>
 <% end %>
@@ -21,6 +30,3 @@
   <p class="not_found">選択した商品が見つかりませんでした</p>
 <%= link_to 'トップに戻る', '/' %>
 <% end %>
-
-
-

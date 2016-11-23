@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    #口コミ情報の取得
+    @item_reviews=ItemReview.where(item_id:@item.id)
   end
 
   def vote
