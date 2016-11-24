@@ -1,6 +1,5 @@
 module ItemsHelper
   def print_item(item)
-     link = "/show/" + item.category
      form_tag("/items/vote", method: "post") do
        content_tag(:div, :class => "product clearfix", :id => "item_"+item.id.to_s,) do
          concat content_tag(:p,item.shop + "  " + item.name,:class => "p_name")
@@ -19,7 +18,7 @@ module ItemsHelper
              concat content_tag(:dd,item.good.to_s+"/"+item.bad.to_s)
            end)
              concat (content_tag(:div, :style => "margin-left :160px") do 
-               concat hidden_field(:item,:id,value:item.id, :style => "margin-left :10px")
+               concat hidden_field(:item,:id,value:item.id)
                concat submit_tag("GOOD",:name =>"item[good]",:class => "btn btn-lg btn-primary")
                concat submit_tag("BAD",:name =>"item[bad]",:class => "btn btn-lg btn-danger",:style =>"margin-left:20px")
              end)
