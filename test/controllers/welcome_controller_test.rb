@@ -12,6 +12,7 @@ class WelcomeControllerTest < ActionController::TestCase
     item.good=good
     item.bad=bad
     item.save
+    return item
   end
 
   def setup
@@ -116,4 +117,44 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_select ".rank2 .p_name",0
     assert_select ".rank3 .p_name",0
   end
+
+  test "コメントがない場合の表示" do
+    item = add_item('ファミマ','惣菜','惣菜1',239,10,3)
+    get :index, item:"惣菜"
+    assert_response :success
+    assert_select ".comment_dd","コメントはまだありません"
+  end
+  
+  test "コメントがある場合の表示" do
+    item = add_item('ファミマ','惣菜','惣菜1',239,10,3)
+    item_review = ItemReview.new
+    item_review.item_id=item.id
+    item_review.handlename="ハンドルネーム"
+    item_review.comment="コメント"
+    item_review.save
+    get :index, item:"惣菜"
+    assert_response :success
+    assert_select ".comment_dd","コメント"
+    assert_select ".comment_hn_dd","ハンドルネーム"+" さん"
+  end
+  
+  test "コメント2件がある場合の表示" do
+    #最新の1件が表示されている
+    item = add_item('ファミマ','惣菜','惣菜1',239,10,3)
+    item_review = ItemReview.new
+    item_review.item_id=item.id
+    item_review.handlename="ハンドルネーム1"
+    item_review.comment="コメント1"
+    item_review.save
+    item_review2 = ItemReview.new
+    item_review2.item_id=item.id
+    item_review2.handlename="ハンドルネーム2"
+    item_review2.comment="コメント2"
+    item_review2.save
+    get :index, item:"惣菜"
+    assert_response :success
+    assert_select ".comment_dd","コメント2"
+    assert_select ".comment_hn_dd","ハンドルネーム2"+" さん"
+  end
+
 end
