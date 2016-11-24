@@ -25,6 +25,11 @@ div.comment dl dd{
 div.comment dl dd input[type="text"]{
   width:200px;
 }
+@media all and (max-width: 480px){
+  div.comment dl dd input[type="text"]#item_review_handlename{
+    width:100%;
+  }
+}
 div.comment dl dd textarea{
   width:100%;
 }
