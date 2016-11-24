@@ -11,17 +11,17 @@ module ItemsHelper
              concat content_tag(:a,image_tag('/images/'+item.image, :width => "150",:style => "float :left"),:href => link)
            end
            concat (content_tag(:dl) do
-             concat content_tag(:dt,"税込価格", :style => "float :left")
-             concat content_tag(:dd,item.price.to_s + "円", :style => "margin-left :80px")
-             concat content_tag(:dt,"話題度", :style => "float :left")
-             concat content_tag(:dd,item.good + item.bad, :style => "margin-left :80px")
-             concat content_tag(:dt,"good/bad", :style => "float :left")
-             concat content_tag(:dd,item.good.to_s+"/"+item.bad.to_s, :style => "margin-left :80px")
+             concat content_tag(:dt,"税込価格")
+             concat content_tag(:dd,item.price.to_s + "円")
+             concat content_tag(:dt,"話題度")
+             concat content_tag(:dd,item.good + item.bad)
+             concat content_tag(:dt,"good/bad")
+             concat content_tag(:dd,item.good.to_s+"/"+item.bad.to_s)
            end)
              concat (content_tag(:div, :style => "margin-left :160px") do 
                concat hidden_field(:item,:id,value:item.id, :style => "margin-left :10px")
-               concat submit_tag("GOOD",:name =>"good")
-               concat submit_tag("BAD",:name =>"bad")
+               concat submit_tag("GOOD",:name =>"item[good]",:class => "btn btn-lg btn-primary")
+               concat submit_tag("BAD",:name =>"item[bad]",:class => "btn btn-lg btn-danger",:style =>"margin-left:20px")
              end)
          end)
        end

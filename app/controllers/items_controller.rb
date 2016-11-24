@@ -10,46 +10,15 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    #口コミ情報の取得
+    @item_reviews=ItemReview.where(item_id:@item.id)
   end
 
-  # 商品名、コンビニ名による表示
-  # FIXME 商品一覧画面がDBに対応するまでのメソッド
-  def view
-    shop = params[:shop]
-    name = params[:name]
-    @item = Item.where(shop:shop).where(name:name) 
-    if !@item.blank?
-      @item = @item.first
-      puts @item
-    else
-      # DBで見つからない場合、静的情報にないか確認する
-      # FIXME 商品一覧移行完了までの暫定ロジック)
-      item_hash = self.get_product_hash 
-      item_hash.each_value {|item_list|
-         item_list.each{|product| 
-           if !@item.blank? 
-             break
-           end 
-           if product.name==name && product.shop==shop
-             @item = Item.new
-             @item.shop=product.shop
-             @item.name=product.name
-             @item.category=product.category
-             @item.price=product.price
-             @item.item=product.item
-             @item.good=0
-             @item.bad=0
-             @item.save
-           end
-         }
-      }
-    end
-  end
-
+  # POST /items/vote
   def vote
     id = params[:item][:id]
     @item = Item.find(id)
-    if params[:good] 
+    if params[:item][:good] 
       @item.good = @item.good+1
     else
       @item.bad = @item.bad+1
@@ -63,6 +32,7 @@ class ItemsController < ApplicationController
     end
   end
 
+  
   # GET /items/new
   def new
     @item = Item.new

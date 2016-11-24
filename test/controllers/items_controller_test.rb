@@ -5,16 +5,48 @@ class ItemsControllerTest < ActionController::TestCase
     @item = items(:one)
   end
 
-  test "商品がない場合" do
-    get :view,{"name"=>"適当な商品","shop"=>"ファミマ"}
-    assert_response :success 
-    assert_select ".not_found",1 
+  test "良いの投稿" do
+    item=Item.new
+    item.good=0
+    item.bad=0
+    item.save
+    post :vote,item:{id:item.id,good:true}    
+    assert_redirected_to item
+    item= Item.find(item.id)
+    assert_equal(1,item.good)
+    assert_equal(0,item.bad)
+  end
+
+  test "悪いの投稿" do
+    item=Item.new
+    item.good=0
+    item.bad=0
+    item.save
+    post :vote,item:{id:item.id,bad:true}    
+    assert_redirected_to item
+    item= Item.find(item.id)
+    assert_equal(0,item.good)
+    assert_equal(1,item.bad)
   end
   
-  test "ファミマ 国産鶏のサラダチキン" do
-    get :view, name:"国産鶏のサラダチキン",shop:"ファミマ"
+  test "口コミの表示" do
+    item=Item.new
+    item.shop="ファミマ"
+    item.category="惣菜"
+    item.item="惣菜"
+    item.name="商品名"
+    item.price=100
+    item.good=10
+    item.bad=3
+    item.save
+    item_review=ItemReview.new
+    item_review.item_id=item.id
+    item_review.handlename="ハンドルネーム"
+    item_review.comment="コメント"
+    item_review.save
+    get :show, id: item
     assert_response :success
-    assert_select "p.p_name"
+    assert_select ".item_review"
   end
 
   test "should get index" do
