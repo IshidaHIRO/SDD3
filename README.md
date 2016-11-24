@@ -15,3 +15,6 @@
 - [Heroku](https://secure-retreat-68116.herokuapp.com/)
 - [Travis](https://travis-ci.org/IshidaHIRO/SDD3)
 - [Backlog](https://github.com/IshidaHIRO/SDD3/projects/2)
+
+##コメント
+- 他のメンバーとの連携が「少し」できて嬉しかった。@IshidaHIRO(Hiroyuki Ishida)
