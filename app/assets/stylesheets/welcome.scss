@@ -18,3 +18,8 @@ span.shop{
   font-size: 2em;
   margin-right: 10px;
 }
+dd.comment_dd{
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
