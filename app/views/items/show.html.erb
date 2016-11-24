@@ -34,9 +34,9 @@
     </table>
   <% end %>
   </div>
-  <%= link_to '商品一覧に戻る', '/show/'+@item.category %>
+  <div class="footer"><%= link_to '商品一覧に戻る', '/show/'+@item.category,:class=>'btn btn-lg btn-default' %></div>
 <% end %>
 <% if @item.blank? %>
   <p class="not_found">選択した商品が見つかりませんでした</p>
-<%= link_to 'トップに戻る', '/' %>
+  <div class="footer"><%= link_to 'トップに戻る', '/' ,:class=>'btn btn-lg btn-default' %></div>
 <% end %>
