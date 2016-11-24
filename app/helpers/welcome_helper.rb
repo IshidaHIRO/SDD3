@@ -16,7 +16,11 @@ module WelcomeHelper
      end
      content_tag(:div, :class => 'product clearfix', :id => target.id.to_s) do
        concat (content_tag(:span,:class => 'rank'+index) do
-         concat content_tag(:span,index+"位",:class => 'rank')
+         if index == "1" || index =="2" || index == "3"
+           concat image_tag('/images/ranking_'+index+'_60.png',:class=>'rank_image')
+         else 
+           concat content_tag(:span,index+"位",:class => 'rank')
+         end
          concat content_tag(:span,target.shop,:class => 'shop')
          concat content_tag(:a, target.name,:class => 'p_name', :href => link) 
        end)
