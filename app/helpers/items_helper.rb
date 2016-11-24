@@ -8,7 +8,7 @@ module ItemsHelper
            if item.image.blank?
              concat image_tag("/images/default01.jpg", :width => "150",:style => "float :left")
            else
-             concat content_tag(:a,image_tag('/images/'+item.image, :width => "150",:style => "float :left"),:href => link)
+             concat image_tag('/images/'+item.image, :width => "150",:style => "float :left")
            end
            concat (content_tag(:dl) do
              concat content_tag(:dt,"税込価格")
