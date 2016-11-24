@@ -5,9 +5,9 @@ module ItemsHelper
          concat content_tag(:p,item.shop + "  " + item.name,:class => "p_name")
          concat (content_tag(:div, :class => "spec") do
            if item.image.blank?
-             concat image_tag("/images/default01.jpg", :width => "150",:style => "float :left")
+             concat image_tag("/images/default01.jpg")
            else
-             concat image_tag('/images/'+item.image, :width => "150",:style => "float :left")
+             concat image_tag('/images/'+item.image)
            end
            concat (content_tag(:div) do
              concat (content_tag(:dl) do
@@ -26,7 +26,4 @@ module ItemsHelper
        end
      end
    end
-
-
-
 end
