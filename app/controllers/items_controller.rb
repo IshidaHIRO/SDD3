@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   def show
     #口コミ情報の取得
     @item_reviews=ItemReview.where(item_id:@item.id)
+    @category = @item.category
   end
 
   # POST /items/vote
