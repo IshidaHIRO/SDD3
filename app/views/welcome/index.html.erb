@@ -2,6 +2,7 @@
   rank_adustor=0
   before_reputation=-1 
 %>
+<%= render 'shared/menu_header' %>
 <% @product.each_with_index do |p,index| %>
   <% 
     if before_reputation == (p.good + p.bad)
@@ -16,3 +17,4 @@
 <% if @product.blank? %>
   <p class="not_found">選択した商品が見つかりませんでした</p>
 <% end %>
+<%= render 'shared/menu_footer' %>
