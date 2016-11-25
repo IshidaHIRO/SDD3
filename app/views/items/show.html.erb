@@ -1,6 +1,7 @@
 <% if !notice.nil? %>
   <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
+<%= render 'shared/menu_header' %>
 <% if !@item.blank? %>
   <!-- 商品情報 -->
   <%= print_item(@item) %>
@@ -40,3 +41,4 @@
   <p class="not_found">選択した商品が見つかりませんでした</p>
   <div class="footer"><%= link_to 'トップに戻る', '/' ,:class=>'btn btn-lg btn-default' %></div>
 <% end %>
+<%= render 'shared/menu_footer' %>

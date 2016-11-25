@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
     end
 
     @product = Item.where(category: @item).order('(good + bad) DESC')
+    @category = @item
 
   end
 end
