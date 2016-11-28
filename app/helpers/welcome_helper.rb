@@ -21,7 +21,7 @@ module WelcomeHelper
        end)
        concat (content_tag(:div, :class => 'spec', :id => 'collapseOne'+target.shop) do 
          if target.image.blank?
-           concat image_tag('/images/default01.jpg')
+	   concat content_tag(:a,image_tag('/images/default01.jpg'),:href => link)
          else
 	   concat content_tag(:a,image_tag('/images/'+target.image),:href => link)
          end
