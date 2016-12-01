@@ -48,6 +48,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
+## add start kh
+    file = params[:item][:image]
+    @item.set_image(file)
+## add end kh
+
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -62,6 +67,12 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+
+## add start kh
+    file = params[:item][:image]
+    @item.set_image(file)
+## add end kh
+
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }

@@ -43,6 +43,18 @@
     <%= f.label :image %><br>
     <%= f.text_field :image %>
   </div>
+  <div class="field">
+    商品画像アップロード
+    <%= f.file_field :image %>
+  </div>
+  <div>
+    <% if @item.image%>
+      <%= image_tag "/images/#{@item.image}" %>
+    <% else %>
+      <%= image_tag "/images/default01.jpg" %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
