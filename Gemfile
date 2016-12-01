@@ -52,8 +52,8 @@ group :development do
 gem 'rails_12factor', group: :production
 ruby '2.2.5'
 
-
-
+gem 'hirb'
+gem 'hirb-unicode'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
