@@ -48,10 +48,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-## add start kh
     file = params[:item][:image]
     @item.set_image(file)
-## add end kh
 
     respond_to do |format|
       if @item.save
@@ -68,10 +66,8 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
 
-## add start kh
     file = params[:item][:image]
     @item.set_image(file)
-## add end kh
 
     respond_to do |format|
       if @item.update(item_params)
@@ -102,6 +98,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:shop, :category, :item, :name, :price, :good, :bad, :image)
+      params.require(:item).permit(:shop, :category, :item, :name, :price, :good, :bad)
     end
 end
