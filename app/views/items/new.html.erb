@@ -1,3 +1,8 @@
+<script>
+$(document).ready(function(){
+  $("#new_item").validationEngine();
+});
+</script>
 <div class="col-xs-12 col-md-12">
   <h1>新しい商品を追加する</h1>
   <%= form_for(@item) do |f| %>
@@ -13,19 +18,19 @@
     <% end %>
     <div class="field">
       <%= f.label :shop %><br>
-      <%= f.select :shop, @shop_hash %>
+      <%= f.select :shop, @shop_hash ,{prompt:"コンビニを選択して下さい"},{class:"validate[required]"} %>
     </div>
     <div class="field">
       <%= f.label :category %><br>
-      <%= f.select :category, @category_hash %>
+      <%= f.select :category, @category_hash ,{prompt:"カテゴリを選択して下さい"},{class:"validate[required]"} %>
     </div>
     <div class="field">
       <%= f.label :name %><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name ,:class=>"validate[required] text-input" %>
     </div>
     <div class="field">
       <%= f.label :price %><br>
-      <%= f.number_field :price %>
+      <%= f.number_field :price,:class=>"validate[required,custom[integer]] text-input" %>
     </div>
     <div class="actions">
       <%= f.submit %>
