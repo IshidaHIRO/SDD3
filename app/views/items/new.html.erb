@@ -3,8 +3,9 @@ $(document).ready(function(){
   $("#new_item").validationEngine();
 });
 </script>
-<div class="col-xs-12 col-md-12">
-  <h1>新しい商品を追加する</h1>
+<div class="col-xs-12">
+  <h1>商品追加フォーム</h1>
+  <p>ランキングに追加したい商品がある場合はこちらから商品情報を登録して下さい</p>
   <%= form_for(@item) do |f| %>
     <% if @item.errors.any? %>
       <div id="error_explanation">
@@ -16,26 +17,36 @@ $(document).ready(function(){
         </ul>
       </div>
     <% end %>
-    <div class="field">
-      <%= f.label :shop %><br>
-      <%= f.select :shop, @shop_hash ,{prompt:"コンビニを選択して下さい"},{class:"validate[required]"} %>
+    <div class="form-group row">
+      <%= f.label "コンビニ名",:class=>"col-xs-12 col-md-3" %>
+      <div class="col-xs-12 col-md-9">
+        <%= f.select :shop, @shop_hash ,{prompt:"コンビニを選択して下さい"},{class:"validate[required] form-control"} %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :category %><br>
-      <%= f.select :category, @category_hash ,{prompt:"カテゴリを選択して下さい"},{class:"validate[required]"} %>
+    <div class="form-group row">
+      <%= f.label "カテゴリ",:class=>"col-xs-12 col-md-3" %>
+      <div class="col-xs-12 col-md-9">
+      <%= f.select :category, @category_hash ,{prompt:"カテゴリを選択して下さい"},{class:"validate[required] form-control"} %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :name %><br>
-      <%= f.text_field :name ,:class=>"validate[required] text-input" %>
+    <div class="form-group row">
+      <%= f.label "商品名", :class=>"col-xs-12 col-md-3" %>
+      <div class="col-xs-12 col-md-9">
+        <%= f.text_field :name ,:class=>"validate[required] text-input form-control" %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :price %><br>
-      <%= f.number_field :price,:class=>"validate[required,custom[integer]] text-input" %>
+    <div class="form-group row">
+      <%= f.label "価格",:class=>"col-xs-12 col-md-3" %>
+      <div class="col-xs-12 col-md-9">
+        <%= f.number_field :price,:class=>"validate[required,custom[integer]] text-input form-control" %>
+      </div>
     </div>
-    <div class="actions">
-      <%= f.submit %>
+    <div class="actions form-group row">
+      <div class="col-md-offset-3 col-md-9">
+        <%= f.submit "登録する",:class=>"btn btn-primary" %>
+        <%= link_to '戻る', items_path,:class=>"btn btn-default",:style=>"margin-left:40px" %>
+      </div> 
     </div>
   <% end %>
 </div>
 
-<%= link_to 'Back', items_path %>
