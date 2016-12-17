@@ -46,7 +46,15 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    @item = Item.new 
+    @item.shop = params[:item][:shop]
+    @item.category = params[:item][:category]
+    @item.name = params[:item][:name]
+    @item.price = params[:item][:price]
+    @item.item=@item.category
+    @item.good=0
+    @item.bad=0
+    @item.image=''
 
     respond_to do |format|
       if @item.save

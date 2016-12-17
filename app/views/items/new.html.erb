@@ -1,5 +1,36 @@
-<h1>New Item</h1>
-
-<%= render 'form' %>
+<div class="col-xs-12 col-md-12">
+  <h1>新しい商品を追加する</h1>
+  <%= form_for(@item) do |f| %>
+    <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+        <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :shop %><br>
+      <%= f.text_field :shop %>
+    </div>
+    <div class="field">
+      <%= f.label :category %><br>
+      <%= f.text_field :category %>
+    </div>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :price %><br>
+      <%= f.number_field :price %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
 
 <%= link_to 'Back', items_path %>
