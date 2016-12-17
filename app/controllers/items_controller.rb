@@ -38,6 +38,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @shop_hash={"コンビニ名を選択して下さい"=>"","ファミマ"=>"ファミマ","セブン"=>"セブン","ローソン"=>"ローソン"}
+    @category_hash={"カテゴリを選択して下さい"=>"","惣菜"=>"惣菜","おにぎり"=>"おにぎり","スイーツ"=>"スイーツ","ドリンク"=>"ドリンク"}
   end
 
   # GET /items/1/edit
