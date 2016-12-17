@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @shop_hash={"コンビニ名を選択して下さい"=>"","ファミマ"=>"ファミマ","セブン"=>"セブン","ローソン"=>"ローソン"}
   end
 
   # GET /items/1/edit
