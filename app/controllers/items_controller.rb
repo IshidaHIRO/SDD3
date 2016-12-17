@@ -57,6 +57,7 @@ class ItemsController < ApplicationController
     @item.good=0
     @item.bad=0
     @item.image=''
+    @item.status="申請中"
 
     respond_to do |format|
       if @item.save
