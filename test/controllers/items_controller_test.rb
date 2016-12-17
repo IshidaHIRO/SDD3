@@ -58,6 +58,14 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
+    assert_select "#item_shop"
+    assert_select "#item_category"
+    assert_select "#item_name"
+    assert_select "#item_price"
+    assert_select "#item_item", 0
+    assert_select "#item_bad", 0
+    assert_select "#item_good", 0
+    assert_select "#item_image", 0
   end
 
   test "should create item" do
