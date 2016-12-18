@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to @item, notice: '商品の追加に成功しました' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
