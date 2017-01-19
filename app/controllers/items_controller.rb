@@ -37,6 +37,8 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @shop_hash={"ファミマ"=>"ファミマ","セブン"=>"セブン","ローソン"=>"ローソン"}
+    @category_hash={"惣菜"=>"惣菜","おにぎり"=>"おにぎり","スイーツ"=>"スイーツ","ドリンク"=>"ドリンク"}
   end
 
   # GET /items/1/edit
@@ -46,7 +48,15 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    @item = Item.new 
+    @item.shop = params[:item][:shop]
+    @item.category = params[:item][:category]
+    @item.name = params[:item][:name]
+    @item.price = params[:item][:price]
+    @item.item=@item.category
+    @item.good=0
+    @item.bad=0
+    @item.image=''
 
     respond_to do |format|
       if @item.save
