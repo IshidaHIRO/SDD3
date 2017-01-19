@@ -70,10 +70,19 @@ class ItemsControllerTest < ActionController::TestCase
 
   test "should create item" do
     assert_difference('Item.count') do
-      post :create, item: { bad: @item.bad, category: @item.category, good: @item.good, image: @item.image, item: @item.item, name: @item.name, price: @item.price, shop: @item.shop }
+      post :create, item: { category: "惣菜", name: "惣菜1", price: 100, shop: "ファミマ" }
     end
-
-    assert_redirected_to item_path(assigns(:item))
+    item = assigns(:item)
+    assert_redirected_to item_path(item)
+    assert_equal item.shop, "ファミマ"
+    assert_equal item.category, "惣菜"
+    assert_equal item.name, "惣菜1"
+    assert_equal item.price, 100
+    assert_equal item.status, "申請中"
+    assert_equal item.item, "惣菜"
+    assert_equal item.image, ""
+    assert_equal item.good, 0
+    assert_equal item.bad, 0
   end
 
   test "should show item" do
